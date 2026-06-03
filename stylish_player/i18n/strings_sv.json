@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Typsnittstorlek - progress",
   "PROGRESS_FONT_SIZE_DESC": "CSS-typsnittstorlek för etiketter nära progressbaren (t.ex. 12px). Lämna tom för att använda temaets standard.",
   "VOLUME_FONT_SIZE": "Typsnittstorlek - volym",
-  "VOLUME_FONT_SIZE_DESC": "CSS-typsnittstorlek för volymetiketten och värdet (t.ex. 12px). Lämna tom för att använda temaets standard."
+  "VOLUME_FONT_SIZE_DESC": "CSS-typsnittstorlek för volymetiketten och värdet (t.ex. 12px). Lämna tom för att använda temaets standard.",
+  "PLAYER_BUTTON_SIZE": "Storlek på spelarknapp",
+  "PLAYER_BUTTON_SIZE_DESC": "Storlek på uppspelnings-/pausknappen (t.ex. 64px, 4rem). Hoppa-knappar är 75% av denna storlek. Lämna tomt för att använda temats standardvärde.",
+  "SECONDARY_ROW_FONT_SIZE": "Ikonstorlek för sekundära kontroller",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS-teckenstorlek för ikoner i sekundära kontroller (blanda, upprepa, favoriter, etc.) (t.ex. 16px, 1.5rem). Lämna tomt för att använda temats standardvärde."
 }

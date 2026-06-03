@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Veľkosť písma panela priebehu",
   "PROGRESS_FONT_SIZE_DESC": "Veľkosť písma (CSS) pre popisky pri paneli priebehu (napr. 12px). Nechajte prázdne pre predvolenú hodnotu témy.",
   "VOLUME_FONT_SIZE": "Veľkosť písma hlasitosti",
-  "VOLUME_FONT_SIZE_DESC": "Veľkosť písma (CSS) pre popis a hodnotu hlasitosti (napr. 12px). Nechajte prázdne pre predvolenú hodnotu témy."
+  "VOLUME_FONT_SIZE_DESC": "Veľkosť písma (CSS) pre popis a hodnotu hlasitosti (napr. 12px). Nechajte prázdne pre predvolenú hodnotu témy.",
+  "PLAYER_BUTTON_SIZE": "Veľkosť tlačidla prehrávača",
+  "PLAYER_BUTTON_SIZE_DESC": "Veľkosť tlačidla prehrávania/pozastavenia (napr. 64px, 4rem). Tlačidlá preskočenia sú 75 % tejto veľkosti. Ponechajte prázdne pre použitie predvoleného nastavenia motívu.",
+  "SECONDARY_ROW_FONT_SIZE": "Veľkosť ikon sekundárnych ovládacích prvkov",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Veľkosť písma CSS pre ikony sekundárnych ovládacích prvkov (náhodné, opakovanie, obľúbené atď.) (napr. 16px, 1.5rem). Ponechajte prázdne pre použitie predvoleného nastavenia motívu."
 }

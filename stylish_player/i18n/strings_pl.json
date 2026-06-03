@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Rozmiar czcionki paska postępu",
   "PROGRESS_FONT_SIZE_DESC": "Rozmiar czcionki (CSS) dla etykiet przy pasku postępu (np. 12px). Pozostaw puste, aby użyć domyślnego motywu.",
   "VOLUME_FONT_SIZE": "Rozmiar czcionki głośności",
-  "VOLUME_FONT_SIZE_DESC": "Rozmiar czcionki (CSS) dla etykiety i wartości głośności (np. 12px). Pozostaw puste, aby użyć domyślnego motywu."
+  "VOLUME_FONT_SIZE_DESC": "Rozmiar czcionki (CSS) dla etykiety i wartości głośności (np. 12px). Pozostaw puste, aby użyć domyślnego motywu.",
+  "PLAYER_BUTTON_SIZE": "Rozmiar przycisku odtwarzacza",
+  "PLAYER_BUTTON_SIZE_DESC": "Rozmiar przycisku odtwarzania/pauzy (np. 64px, 4rem). Przyciski pomijania mają 75% tego rozmiaru. Pozostaw puste, aby użyć wartości domyślnej motywu.",
+  "SECONDARY_ROW_FONT_SIZE": "Rozmiar ikon pomocniczych elementów sterujących",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Rozmiar czcionki CSS dla ikon pomocniczych elementów sterujących (losowo, powtórz, ulubione itp.) (np. 16px, 1.5rem). Pozostaw puste, aby użyć wartości domyślnej motywu."
 }

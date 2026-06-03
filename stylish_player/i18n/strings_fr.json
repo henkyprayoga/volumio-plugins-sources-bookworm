@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Taille de police de la barre de progression",
   "PROGRESS_FONT_SIZE_DESC": "Taille CSS de la police pour les étiquettes près de la barre de progression (ex. 12px). Laissez vide pour utiliser la valeur par défaut du thème.",
   "VOLUME_FONT_SIZE": "Taille de police du volume",
-  "VOLUME_FONT_SIZE_DESC": "Taille CSS de la police pour le libellé et la valeur du volume (ex. 12px). Laissez vide pour utiliser la valeur par défaut du thème."
+  "VOLUME_FONT_SIZE_DESC": "Taille CSS de la police pour le libellé et la valeur du volume (ex. 12px). Laissez vide pour utiliser la valeur par défaut du thème.",
+  "PLAYER_BUTTON_SIZE": "Taille des boutons du lecteur",
+  "PLAYER_BUTTON_SIZE_DESC": "Taille du bouton lecture/pause (ex. 64px, 4rem). Les boutons avance/retour sont dimensionnés à 75 % de cette valeur. Laissez vide pour utiliser la valeur par défaut du thème.",
+  "SECONDARY_ROW_FONT_SIZE": "Taille des icônes des contrôles secondaires",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Taille de police CSS pour les icônes des contrôles secondaires (aléatoire, répéter, favoris, etc.) (ex. 16px, 1.5rem). Laissez vide pour utiliser la valeur par défaut du thème."
 }

@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Skriftstørrelse - fremdriftslinje",
   "PROGRESS_FONT_SIZE_DESC": "CSS-skriftstørrelse for etiketter ved fremdriftslinjen (f.eks. 12px). Lad være tom for at bruge temaets standard.",
   "VOLUME_FONT_SIZE": "Skriftstørrelse - lydstyrke",
-  "VOLUME_FONT_SIZE_DESC": "CSS-skriftstørrelse for lydstyrkeetiket og -værdi (f.eks. 12px). Lad være tom for at bruge temaets standard."
+  "VOLUME_FONT_SIZE_DESC": "CSS-skriftstørrelse for lydstyrkeetiket og -værdi (f.eks. 12px). Lad være tom for at bruge temaets standard.",
+  "PLAYER_BUTTON_SIZE": "Størrelse på afspillerknapper",
+  "PLAYER_BUTTON_SIZE_DESC": "Størrelse på afspil/pause-knappen (f.eks. 64px, 4rem). Spring-knapper skaleres til 75% af denne størrelse. Lad feltet være tomt for at bruge temaets standard.",
+  "SECONDARY_ROW_FONT_SIZE": "Ikonstørrelse for sekundære knapper",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS-skriftstørrelse for ikonerne i de sekundære knapper (shuffle, gentag, favorit osv.) (f.eks. 16px, 1.5rem). Lad feltet være tomt for at bruge temaets standard."
 }

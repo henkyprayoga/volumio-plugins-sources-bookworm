@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Kích thước phông thanh tiến trình",
   "PROGRESS_FONT_SIZE_DESC": "Kích thước phông (CSS) cho nhãn gần thanh tiến trình (ví dụ 12px). Để trống để sử dụng mặc định của chủ đề.",
   "VOLUME_FONT_SIZE": "Kích thước phông âm lượng",
-  "VOLUME_FONT_SIZE_DESC": "Kích thước phông (CSS) cho nhãn và giá trị âm lượng (ví dụ 12px). Để trống để sử dụng mặc định của chủ đề."
+  "VOLUME_FONT_SIZE_DESC": "Kích thước phông (CSS) cho nhãn và giá trị âm lượng (ví dụ 12px). Để trống để sử dụng mặc định của chủ đề.",
+  "PLAYER_BUTTON_SIZE": "Kích thước nút trình phát",
+  "PLAYER_BUTTON_SIZE_DESC": "Kích thước nút phát/tạm dừng (ví dụ: 64px, 4rem). Các nút bỏ qua có kích thước bằng 75% giá trị này. Để trống để sử dụng mặc định của giao diện.",
+  "SECONDARY_ROW_FONT_SIZE": "Kích thước biểu tượng điều khiển phụ",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Kích thước phông chữ CSS cho biểu tượng điều khiển phụ (ngẫu nhiên, lặp lại, yêu thích, v.v.) (ví dụ: 16px, 1.5rem). Để trống để sử dụng mặc định của giao diện."
 }

@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "进度条字体大小",
   "PROGRESS_FONT_SIZE_DESC": "进度条附近标签的 CSS 字体大小（例如 12px）。留空以使用主题默认值。",
   "VOLUME_FONT_SIZE": "音量标签字体大小",
-  "VOLUME_FONT_SIZE_DESC": "音量标签和数值的 CSS 字体大小（例如 12px）。留空以使用主题默认值。"
+  "VOLUME_FONT_SIZE_DESC": "音量标签和数值的 CSS 字体大小（例如 12px）。留空以使用主题默认值。",
+  "PLAYER_BUTTON_SIZE": "播放器按钮大小",
+  "PLAYER_BUTTON_SIZE_DESC": "播放/暂停按钮的大小（例如 64px、4rem）。跳过按钮为此值的 75%。留空以使用主题默认值。",
+  "SECONDARY_ROW_FONT_SIZE": "次要控件图标大小",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "次要控件图标（随机、重复、收藏等）的 CSS 字体大小（例如 16px、1.5rem）。留空以使用主题默认值。"
 }

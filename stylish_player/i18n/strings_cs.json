@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Velikost písma ukazatele průběhu",
   "PROGRESS_FONT_SIZE_DESC": "Velikost písma (CSS) pro popisky u lišty průběhu (např. 12px). Nechte prázdné pro výchozí hodnotu motivu.",
   "VOLUME_FONT_SIZE": "Velikost písma hlasitosti",
-  "VOLUME_FONT_SIZE_DESC": "Velikost písma (CSS) pro štítek a hodnotu hlasitosti (např. 12px). Nechte prázdné pro výchozí hodnotu motivu."
+  "VOLUME_FONT_SIZE_DESC": "Velikost písma (CSS) pro štítek a hodnotu hlasitosti (např. 12px). Nechte prázdné pro výchozí hodnotu motivu.",
+  "PLAYER_BUTTON_SIZE": "Velikost tlačítka přehrávače",
+  "PLAYER_BUTTON_SIZE_DESC": "Velikost tlačítka přehrát/pozastavit (např. 64px, 4rem). Tlačítka přeskočení jsou 75 % této hodnoty. Ponechte prázdné pro výchozí nastavení motivu.",
+  "SECONDARY_ROW_FONT_SIZE": "Velikost ikon sekundárních ovládacích prvků",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Velikost písma CSS pro ikony sekundárních ovládacích prvků (přehrávání náhodně, opakování, oblíbené atd.) (např. 16px, 1.5rem). Ponechte prázdné pro výchozí nastavení motivu."
 }

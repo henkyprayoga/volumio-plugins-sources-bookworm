@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Tamanho da fonte da barra de progresso",
   "PROGRESS_FONT_SIZE_DESC": "Tamanho da fonte (CSS) para rótulos próximos à barra de progresso (ex.: 12px). Deixe vazio para usar o padrão do tema.",
   "VOLUME_FONT_SIZE": "Tamanho da fonte do volume",
-  "VOLUME_FONT_SIZE_DESC": "Tamanho da fonte (CSS) para o label e valor do volume (ex.: 12px). Deixe vazio para usar o padrão do tema."
+  "VOLUME_FONT_SIZE_DESC": "Tamanho da fonte (CSS) para o label e valor do volume (ex.: 12px). Deixe vazio para usar o padrão do tema.",
+  "PLAYER_BUTTON_SIZE": "Tamanho do botão do player",
+  "PLAYER_BUTTON_SIZE_DESC": "Tamanho do botão de reprodução/pausa (ex.: 64px, 4rem). Os botões de salto têm 75% deste tamanho. Deixe vazio para usar o padrão do tema.",
+  "SECONDARY_ROW_FONT_SIZE": "Tamanho dos ícones dos controles secundários",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Tamanho de fonte CSS para os ícones dos controles secundários (aleatório, repetir, favoritos, etc.) (ex.: 16px, 1.5rem). Deixe vazio para usar o padrão do tema."
 }

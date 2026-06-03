@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Schriftgröße Fortschrittsbalken",
   "PROGRESS_FONT_SIZE_DESC": "CSS-Schriftgröße für Beschriftungen neben dem Fortschrittsbalken (z. B. 12px). Leer lassen, um den Theme-Standard zu verwenden.",
   "VOLUME_FONT_SIZE": "Schriftgröße Lautstärke",
-  "VOLUME_FONT_SIZE_DESC": "CSS-Schriftgröße für Lautstärke-Beschriftung und Wert (z. B. 12px). Leer lassen, um den Theme-Standard zu verwenden."
+  "VOLUME_FONT_SIZE_DESC": "CSS-Schriftgröße für Lautstärke-Beschriftung und Wert (z. B. 12px). Leer lassen, um den Theme-Standard zu verwenden.",
+  "PLAYER_BUTTON_SIZE": "Größe der Player-Schaltfläche",
+  "PLAYER_BUTTON_SIZE_DESC": "Größe der Wiedergabe/Pause-Schaltfläche (z. B. 64px, 4rem). Skip-Schaltflächen sind 75 % dieser Größe. Leer lassen, um den Theme-Standard zu verwenden.",
+  "SECONDARY_ROW_FONT_SIZE": "Symbolgröße sekundärer Steuerungen",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS-Schriftgröße für Symbole der sekundären Steuerungen (Zufallswiedergabe, Wiederholen, Favoriten usw.) (z. B. 16px, 1.5rem). Leer lassen, um den Theme-Standard zu verwenden."
 }

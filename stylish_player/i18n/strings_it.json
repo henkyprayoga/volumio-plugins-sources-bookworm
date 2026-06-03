@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Dimensione carattere - barra di avanzamento",
   "PROGRESS_FONT_SIZE_DESC": "Dimensione font CSS per le etichette vicino alla barra di avanzamento (es. 12px). Lascia vuoto per usare il valore predefinito del tema.",
   "VOLUME_FONT_SIZE": "Dimensione carattere - volume",
-  "VOLUME_FONT_SIZE_DESC": "Dimensione font CSS per l'etichetta e il valore del volume (es. 12px). Lascia vuoto per usare il valore predefinito del tema."
+  "VOLUME_FONT_SIZE_DESC": "Dimensione font CSS per l'etichetta e il valore del volume (es. 12px). Lascia vuoto per usare il valore predefinito del tema.",
+  "PLAYER_BUTTON_SIZE": "Dimensione del pulsante player",
+  "PLAYER_BUTTON_SIZE_DESC": "Dimensione del pulsante play/pausa (es. 64px, 4rem). I pulsanti di salto sono dimensionati al 75% di questo valore. Lasciare vuoto per usare il valore predefinito del tema.",
+  "SECONDARY_ROW_FONT_SIZE": "Dimensione icone controlli secondari",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Dimensione del carattere CSS per le icone dei controlli secondari (casuale, ripeti, preferiti, ecc.) (es. 16px, 1.5rem). Lasciare vuoto per usare il valore predefinito del tema."
 }

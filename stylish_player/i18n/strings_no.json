@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Skriftstørrelse - fremdriftslinje",
   "PROGRESS_FONT_SIZE_DESC": "CSS-skriftstørrelse for etiketter ved fremdriftslinjen (f.eks. 12px). La stå tom for å bruke temaets standard.",
   "VOLUME_FONT_SIZE": "Skriftstørrelse - volum",
-  "VOLUME_FONT_SIZE_DESC": "CSS-skriftstørrelse for volumetikett og -verdi (f.eks. 12px). La stå tom for å bruke temaets standard."
+  "VOLUME_FONT_SIZE_DESC": "CSS-skriftstørrelse for volumetikett og -verdi (f.eks. 12px). La stå tom for å bruke temaets standard.",
+  "PLAYER_BUTTON_SIZE": "Størrelse på spillerknapp",
+  "PLAYER_BUTTON_SIZE_DESC": "Størrelse på avspill/pause-knappen (f.eks. 64px, 4rem). Hopp-knapper er 75% av denne størrelsen. La feltet stå tomt for å bruke temaets standard.",
+  "SECONDARY_ROW_FONT_SIZE": "Ikonstørrelse for sekundære kontroller",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS-skriftstørrelse for ikoner i sekundære kontroller (tilfeldig, gjenta, favoritter osv.) (f.eks. 16px, 1.5rem). La feltet stå tomt for å bruke temaets standard."
 }

@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Előrehaladás sáv betűmérete",
   "PROGRESS_FONT_SIZE_DESC": "A progress sáv melletti feliratok CSS betűmérete (pl. 12px). Hagyd üresen az alapértelmezett témaértékhez.",
   "VOLUME_FONT_SIZE": "Hangerő betűmérete",
-  "VOLUME_FONT_SIZE_DESC": "A hangerő címkéjének és értékének CSS betűmérete (pl. 12px). Hagyd üresen az alapértelmezett témaértékhez."
+  "VOLUME_FONT_SIZE_DESC": "A hangerő címkéjének és értékének CSS betűmérete (pl. 12px). Hagyd üresen az alapértelmezett témaértékhez.",
+  "PLAYER_BUTTON_SIZE": "Lejátszó gomb mérete",
+  "PLAYER_BUTTON_SIZE_DESC": "A lejátszás/szünet gomb mérete (pl. 64px, 4rem). A kihagyás gombok ennek 75%-os méretűek. Hagyja üresen a téma alapértelmezésének használatához.",
+  "SECONDARY_ROW_FONT_SIZE": "Másodlagos vezérlők ikonmérete",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS betűméret a másodlagos vezérlők ikonjaihoz (keverés, ismétlés, kedvencek stb.) (pl. 16px, 1.5rem). Hagyja üresen a téma alapértelmezésének használatához."
 }

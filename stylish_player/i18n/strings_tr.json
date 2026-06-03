@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "İlerleme Çubuğu Yazı Tipi Boyutu",
   "PROGRESS_FONT_SIZE_DESC": "İlerleme çubuğu yakınındaki etiketler için CSS yazı tipi boyutu (ör. 12px). Tema varsayılanını kullanmak için boş bırakın.",
   "VOLUME_FONT_SIZE": "Ses Seviyesi Yazı Tipi Boyutu",
-  "VOLUME_FONT_SIZE_DESC": "Ses etiketi ve değeri için CSS yazı tipi boyutu (ör. 12px). Tema varsayılanını kullanmak için boş bırakın."
+  "VOLUME_FONT_SIZE_DESC": "Ses etiketi ve değeri için CSS yazı tipi boyutu (ör. 12px). Tema varsayılanını kullanmak için boş bırakın.",
+  "PLAYER_BUTTON_SIZE": "Oynatıcı Düğme Boyutu",
+  "PLAYER_BUTTON_SIZE_DESC": "Oynat/duraklat düğmesinin boyutu (örn. 64px, 4rem). Atlama düğmeleri bu değerin %75'i kadar boyutlandırılır. Tema varsayılanını kullanmak için boş bırakın.",
+  "SECONDARY_ROW_FONT_SIZE": "İkincil Kontrol Simgesi Boyutu",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "İkincil kontrol simgeleri için CSS yazı tipi boyutu (karıştır, tekrarla, favoriler vb.) (örn. 16px, 1.5rem). Tema varsayılanını kullanmak için boş bırakın."
 }

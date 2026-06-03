@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "진행 표시줄 글꼴 크기",
   "PROGRESS_FONT_SIZE_DESC": "진행 표시줄 근처 레이블의 CSS 글꼴 크기 (예: 12px). 비워두면 테마 기본값을 사용합니다.",
   "VOLUME_FONT_SIZE": "볼륨 레이블 글꼴 크기",
-  "VOLUME_FONT_SIZE_DESC": "볼륨 레이블 및 값의 CSS 글꼴 크기 (예: 12px). 비워두면 테마 기본값을 사용합니다."
+  "VOLUME_FONT_SIZE_DESC": "볼륨 레이블 및 값의 CSS 글꼴 크기 (예: 12px). 비워두면 테마 기본값을 사용합니다.",
+  "PLAYER_BUTTON_SIZE": "플레이어 버튼 크기",
+  "PLAYER_BUTTON_SIZE_DESC": "재생/일시정지 버튼의 크기 (예: 64px, 4rem). 건너뛰기 버튼은 이 크기의 75%입니다. 테마 기본값을 사용하려면 비워 두세요.",
+  "SECONDARY_ROW_FONT_SIZE": "보조 컨트롤 아이콘 크기",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "보조 컨트롤 아이콘(셔플, 반복, 즐겨찾기 등)의 CSS 폰트 크기 (예: 16px, 1.5rem). 테마 기본값을 사용하려면 비워 두세요."
 }

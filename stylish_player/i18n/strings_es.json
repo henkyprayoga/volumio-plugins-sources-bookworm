@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Tamaño de fuente de la barra de progreso",
   "PROGRESS_FONT_SIZE_DESC": "Tamaño CSS para las etiquetas cerca de la barra de progreso (p. ej. 12px). Deja vacío para usar el valor predeterminado del tema.",
   "VOLUME_FONT_SIZE": "Tamaño de fuente del volumen",
-  "VOLUME_FONT_SIZE_DESC": "Tamaño CSS para la etiqueta y el valor del volumen (p. ej. 12px). Deja vacío para usar el valor predeterminado del tema."
+  "VOLUME_FONT_SIZE_DESC": "Tamaño CSS para la etiqueta y el valor del volumen (p. ej. 12px). Deja vacío para usar el valor predeterminado del tema.",
+  "PLAYER_BUTTON_SIZE": "Tamaño del botón de reproducción",
+  "PLAYER_BUTTON_SIZE_DESC": "Tamaño del botón de reproducción/pausa (p. ej. 64px, 4rem). Los botones de avance/retroceso tienen un 75% de este tamaño. Déjelo vacío para usar el valor predeterminado del tema.",
+  "SECONDARY_ROW_FONT_SIZE": "Tamaño de los iconos de controles secundarios",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "Tamaño de fuente CSS para los iconos de controles secundarios (aleatorio, repetir, favoritos, etc.) (p. ej. 16px, 1.5rem). Déjelo vacío para usar el valor predeterminado del tema."
 }

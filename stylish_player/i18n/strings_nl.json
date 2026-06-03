@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Lettergrootte - voortgangsbalk",
   "PROGRESS_FONT_SIZE_DESC": "CSS-lettergrootte voor labels bij de voortgangsbalk (bijv. 12px). Laat leeg om de thema-standaard te gebruiken.",
   "VOLUME_FONT_SIZE": "Lettergrootte - volume",
-  "VOLUME_FONT_SIZE_DESC": "CSS-lettergrootte voor het volumelabel en de waarde (bijv. 12px). Laat leeg om de thema-standaard te gebruiken."
+  "VOLUME_FONT_SIZE_DESC": "CSS-lettergrootte voor het volumelabel en de waarde (bijv. 12px). Laat leeg om de thema-standaard te gebruiken.",
+  "PLAYER_BUTTON_SIZE": "Grootte spelerknop",
+  "PLAYER_BUTTON_SIZE_DESC": "Grootte van de afspelen/pauzeren-knop (bijv. 64px, 4rem). Sla-knoppen worden op 75% van deze grootte ingesteld. Leeg laten voor de standaardinstelling van het thema.",
+  "SECONDARY_ROW_FONT_SIZE": "Pictogramgrootte secundaire bedieningselementen",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS-lettergrootte voor pictogrammen van secundaire bedieningselementen (willekeurig, herhalen, favorieten, enz.) (bijv. 16px, 1.5rem). Leeg laten voor de standaardinstelling van het thema."
 }

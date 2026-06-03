@@ -148,5 +148,9 @@
   "PROGRESS_FONT_SIZE": "Edistymispalkin fonttikoko",
   "PROGRESS_FONT_SIZE_DESC": "CSS-fonttikoko edistymispalkin lähietiketeille (esim. 12px). Jätä tyhjäksi käyttääksesi teeman oletusta.",
   "VOLUME_FONT_SIZE": "Äänenvoimakkuuden fonttikoko",
-  "VOLUME_FONT_SIZE_DESC": "CSS-fonttikoko äänenvoimakkuuden nimikkeelle ja arvonäytölle (esim. 12px). Jätä tyhjäksi käyttääksesi teeman oletusta."
+  "VOLUME_FONT_SIZE_DESC": "CSS-fonttikoko äänenvoimakkuuden nimikkeelle ja arvonäytölle (esim. 12px). Jätä tyhjäksi käyttääksesi teeman oletusta.",
+  "PLAYER_BUTTON_SIZE": "Soittimen painikkeen koko",
+  "PLAYER_BUTTON_SIZE_DESC": "Toisto/tauko-painikkeen koko (esim. 64px, 4rem). Ohitus-painikkeet ovat 75 % tästä koosta. Jätä tyhjäksi käyttääksesi teeman oletusarvoa.",
+  "SECONDARY_ROW_FONT_SIZE": "Toissijaisten ohjainten kuvakekoko",
+  "SECONDARY_ROW_FONT_SIZE_DESC": "CSS-kirjasinkoko toissijaisille ohjainten kuvakkeille (sekoitus, toisto, suosikit jne.) (esim. 16px, 1.5rem). Jätä tyhjäksi käyttääksesi teeman oletusarvoa."
 }

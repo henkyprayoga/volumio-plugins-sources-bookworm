@@ -980,13 +980,21 @@ ControllerStylishPlayer.prototype._buildConfigData = function () {
       try { return JSON.parse(raw); } catch (e) { return { layouts: [] }; }
     })(),
     titleFontSize: self.config.get("titleFontSize", ""),
+    titleFontName: self.config.get("titleFontName", ""),
     albumFontSize: self.config.get("albumFontSize", ""),
+    albumFontName: self.config.get("albumFontName", ""),
     artistFontSize: self.config.get("artistFontSize", ""),
+    artistFontName: self.config.get("artistFontName", ""),
     bitrateFontSize: self.config.get("bitrateFontSize", ""),
+    bitrateFontName: self.config.get("bitrateFontName", ""),
     progressFontSize: self.config.get("progressFontSize", ""),
+    progressFontName: self.config.get("progressFontName", ""),
     volumeFontSize: self.config.get("volumeFontSize", ""),
+    volumeFontName: self.config.get("volumeFontName", ""),
     playerButtonSize: self.config.get("playerButtonSize", ""),
+    playerButtonFontName: self.config.get("playerButtonFontName", ""),
     secondaryRowFontSize: self.config.get("secondaryRowFontSize", ""),
+    secondaryRowFontName: self.config.get("secondaryRowFontName", ""),
     language: self.commandRouter.sharedVars.get("language_code") || 'en',
   };
 };
@@ -1141,13 +1149,21 @@ ControllerStylishPlayer.prototype.getUIConfig = function () {
 
       // ── section_fonts ──────────────────────────────────────────────────
       field('section_fonts', 'titleFontSize').value    = self.config.get("titleFontSize", "");
+      field('section_fonts', 'titleFontName').value    = self.config.get("titleFontName", "");
       field('section_fonts', 'albumFontSize').value    = self.config.get("albumFontSize", "");
+      field('section_fonts', 'albumFontName').value    = self.config.get("albumFontName", "");
       field('section_fonts', 'artistFontSize').value   = self.config.get("artistFontSize", "");
+      field('section_fonts', 'artistFontName').value   = self.config.get("artistFontName", "");
       field('section_fonts', 'bitrateFontSize').value  = self.config.get("bitrateFontSize", "");
+      field('section_fonts', 'bitrateFontName').value  = self.config.get("bitrateFontName", "");
       field('section_fonts', 'progressFontSize').value = self.config.get("progressFontSize", "");
+      field('section_fonts', 'progressFontName').value = self.config.get("progressFontName", "");
       field('section_fonts', 'volumeFontSize').value   = self.config.get("volumeFontSize", "");
+      field('section_fonts', 'volumeFontName').value   = self.config.get("volumeFontName", "");
       field('section_fonts', 'playerButtonSize').value         = self.config.get("playerButtonSize", "");
+      field('section_fonts', 'playerButtonFontName').value     = self.config.get("playerButtonFontName", "");
       field('section_fonts', 'secondaryRowFontSize').value     = self.config.get("secondaryRowFontSize", "");
+      field('section_fonts', 'secondaryRowFontName').value     = self.config.get("secondaryRowFontName", "");
 
       // ── section_idle_screen ────────────────────────────────────────────
       setSelect('section_idle_screen', 'idleScreen', 'idleScreen', 'analogClock');
@@ -1397,7 +1413,7 @@ ControllerStylishPlayer.prototype.configSaveColors = function (data) {
 
 ControllerStylishPlayer.prototype.configSaveFonts = function (data) {
   var self = this;
-  var fields = ["titleFontSize", "albumFontSize", "artistFontSize", "bitrateFontSize", "progressFontSize", "volumeFontSize", "playerButtonSize", "secondaryRowFontSize"];
+  var fields = ["titleFontSize", "titleFontName", "albumFontSize", "albumFontName", "artistFontSize", "artistFontName", "bitrateFontSize", "bitrateFontName", "progressFontSize", "progressFontName", "volumeFontSize", "volumeFontName", "playerButtonSize", "playerButtonFontName", "secondaryRowFontSize", "secondaryRowFontName"];
   //self.logger.info("Stylish Player: configSaveFonts called with data: " + JSON.stringify(data));
 
   for (var i = 0; i < fields.length; i++) {

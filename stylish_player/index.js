@@ -992,9 +992,7 @@ ControllerStylishPlayer.prototype._buildConfigData = function () {
     volumeFontSize: self.config.get("volumeFontSize", ""),
     volumeFontName: self.config.get("volumeFontName", ""),
     playerButtonSize: self.config.get("playerButtonSize", ""),
-    playerButtonFontName: self.config.get("playerButtonFontName", ""),
     secondaryRowFontSize: self.config.get("secondaryRowFontSize", ""),
-    secondaryRowFontName: self.config.get("secondaryRowFontName", ""),
     language: self.commandRouter.sharedVars.get("language_code") || 'en',
   };
 };
@@ -1161,9 +1159,7 @@ ControllerStylishPlayer.prototype.getUIConfig = function () {
       field('section_fonts', 'volumeFontSize').value   = self.config.get("volumeFontSize", "");
       field('section_fonts', 'volumeFontName').value   = self.config.get("volumeFontName", "");
       field('section_fonts', 'playerButtonSize').value         = self.config.get("playerButtonSize", "");
-      field('section_fonts', 'playerButtonFontName').value     = self.config.get("playerButtonFontName", "");
       field('section_fonts', 'secondaryRowFontSize').value     = self.config.get("secondaryRowFontSize", "");
-      field('section_fonts', 'secondaryRowFontName').value     = self.config.get("secondaryRowFontName", "");
 
       // ── section_idle_screen ────────────────────────────────────────────
       setSelect('section_idle_screen', 'idleScreen', 'idleScreen', 'analogClock');
@@ -1413,7 +1409,7 @@ ControllerStylishPlayer.prototype.configSaveColors = function (data) {
 
 ControllerStylishPlayer.prototype.configSaveFonts = function (data) {
   var self = this;
-  var fields = ["titleFontSize", "titleFontName", "albumFontSize", "albumFontName", "artistFontSize", "artistFontName", "bitrateFontSize", "bitrateFontName", "progressFontSize", "progressFontName", "volumeFontSize", "volumeFontName", "playerButtonSize", "playerButtonFontName", "secondaryRowFontSize", "secondaryRowFontName"];
+  var fields = ["titleFontSize", "titleFontName", "albumFontSize", "albumFontName", "artistFontSize", "artistFontName", "bitrateFontSize", "bitrateFontName", "progressFontSize", "progressFontName", "volumeFontSize", "volumeFontName", "playerButtonSize", "secondaryRowFontSize"];
   //self.logger.info("Stylish Player: configSaveFonts called with data: " + JSON.stringify(data));
 
   for (var i = 0; i < fields.length; i++) {

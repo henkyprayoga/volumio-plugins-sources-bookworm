@@ -321,7 +321,7 @@
       },
       "saveButton": {
         "label": "TRANSLATE.SAVE",
-        "data": ["titleFontSize", "titleFontName", "albumFontSize", "albumFontName", "artistFontSize", "artistFontName", "bitrateFontSize", "bitrateFontName", "progressFontSize", "progressFontName", "volumeFontSize", "volumeFontName", "playerButtonSize", "playerButtonFontName", "secondaryRowFontSize", "secondaryRowFontName"]
+        "data": ["titleFontSize", "titleFontName", "albumFontSize", "albumFontName", "artistFontSize", "artistFontName", "bitrateFontSize", "bitrateFontName", "progressFontSize", "progressFontName", "volumeFontSize", "volumeFontName", "playerButtonSize", "secondaryRowFontSize"]
       },
       "content": [
         {
@@ -423,25 +423,11 @@
           "value": ""
         },
         {
-          "id": "playerButtonFontName",
-          "type": "text",
-          "element": "input",
-          "label": "TRANSLATE.PLAYER_BUTTON_FONT_NAME",
-          "value": ""
-        },
-        {
           "id": "secondaryRowFontSize",
           "type": "text",
           "element": "input",
           "label": "TRANSLATE.SECONDARY_ROW_FONT_SIZE",
           "doc": "TRANSLATE.SECONDARY_ROW_FONT_SIZE_DESC",
-          "value": ""
-        },
-        {
-          "id": "secondaryRowFontName",
-          "type": "text",
-          "element": "input",
-          "label": "TRANSLATE.SECONDARY_ROW_FONT_NAME",
           "value": ""
         }
       ]

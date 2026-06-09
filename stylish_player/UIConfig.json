@@ -256,7 +256,7 @@
       },
       "saveButton": {
         "label": "TRANSLATE.SAVE",
-        "data": ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "controlColor"]
+        "data": ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "controlColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"]
       },
       "content": [
         {
@@ -305,6 +305,38 @@
           "element": "input",
           "label": "TRANSLATE.CONTROL_COLOR",
           "doc": "TRANSLATE.CONTROL_COLOR_DESC",
+          "value": ""
+        },
+        {
+          "id": "buttonBgColor",
+          "type": "text",
+          "element": "input",
+          "label": "TRANSLATE.BUTTON_BG_COLOR",
+          "doc": "TRANSLATE.BUTTON_BG_COLOR_DESC",
+          "value": ""
+        },
+        {
+          "id": "barTrackColor",
+          "type": "text",
+          "element": "input",
+          "label": "TRANSLATE.BAR_TRACK_COLOR",
+          "doc": "TRANSLATE.BAR_TRACK_COLOR_DESC",
+          "value": ""
+        },
+        {
+          "id": "barTextColor",
+          "type": "text",
+          "element": "input",
+          "label": "TRANSLATE.BAR_TEXT_COLOR",
+          "doc": "TRANSLATE.BAR_TEXT_COLOR_DESC",
+          "value": ""
+        },
+        {
+          "id": "iconBtnColor",
+          "type": "text",
+          "element": "input",
+          "label": "TRANSLATE.ICON_BTN_COLOR",
+          "doc": "TRANSLATE.ICON_BTN_COLOR_DESC",
           "value": ""
         }
       ]

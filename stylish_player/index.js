@@ -956,6 +956,10 @@ ControllerStylishPlayer.prototype._buildConfigData = function () {
     albumColor: self.config.get("albumColor", ""),
     streamInfoColor: self.config.get("streamInfoColor", ""),
     controlColor: self.config.get("controlColor", ""),
+    buttonBgColor: self.config.get("buttonBgColor", ""),
+    barTrackColor: self.config.get("barTrackColor", ""),
+    barTextColor: self.config.get("barTextColor", ""),
+    iconBtnColor: self.config.get("iconBtnColor", ""),
     port: self.config.get("port", 3339),
     latitude: self.config.get("latitude", ""),
     longitude: self.config.get("longitude", ""),
@@ -1153,6 +1157,10 @@ ControllerStylishPlayer.prototype.getUIConfig = function () {
       field('section_colors', 'albumColor').value      = self.config.get("albumColor", "");
       field('section_colors', 'streamInfoColor').value = self.config.get("streamInfoColor", "");
       field('section_colors', 'controlColor').value    = self.config.get("controlColor", "");
+      field('section_colors', 'buttonBgColor').value   = self.config.get("buttonBgColor", "");
+      field('section_colors', 'barTrackColor').value   = self.config.get("barTrackColor", "");
+      field('section_colors', 'barTextColor').value    = self.config.get("barTextColor", "");
+      field('section_colors', 'iconBtnColor').value    = self.config.get("iconBtnColor", "");
 
       // ── section_fonts ──────────────────────────────────────────────────
       field('section_fonts', 'titleFontSize').value    = self.config.get("titleFontSize", "");
@@ -1416,7 +1424,7 @@ ControllerStylishPlayer.prototype.configSaveLayoutDesigner = function (data) {
 ControllerStylishPlayer.prototype.configSaveColors = function (data) {
   var self = this;
   var hexPattern = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
-  var fields = ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "controlColor"];
+  var fields = ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "controlColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"];
 
   for (var i = 0; i < fields.length; i++) {
     var val = (data[fields[i]] || "").toString().trim();

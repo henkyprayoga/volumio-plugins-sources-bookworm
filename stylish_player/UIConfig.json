@@ -256,7 +256,7 @@
       },
       "saveButton": {
         "label": "TRANSLATE.SAVE",
-        "data": ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "controlColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"]
+        "data": ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "buttonColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"]
       },
       "content": [
         {
@@ -300,7 +300,7 @@
           "value": ""
         },
         {
-          "id": "controlColor",
+          "id": "buttonColor",
           "type": "text",
           "element": "input",
           "label": "TRANSLATE.CONTROL_COLOR",

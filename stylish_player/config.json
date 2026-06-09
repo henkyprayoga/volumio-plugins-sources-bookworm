@@ -135,7 +135,7 @@
     "type": "string",
     "value": ""
   },
-  "controlColor": {
+  "buttonColor": {
     "type": "string",
     "value": ""
   },

@@ -955,7 +955,7 @@ ControllerStylishPlayer.prototype._buildConfigData = function () {
     artistColor: self.config.get("artistColor", ""),
     albumColor: self.config.get("albumColor", ""),
     streamInfoColor: self.config.get("streamInfoColor", ""),
-    controlColor: self.config.get("controlColor", ""),
+    buttonColor: self.config.get("buttonColor", ""),
     buttonBgColor: self.config.get("buttonBgColor", ""),
     barTrackColor: self.config.get("barTrackColor", ""),
     barTextColor: self.config.get("barTextColor", ""),
@@ -1156,7 +1156,7 @@ ControllerStylishPlayer.prototype.getUIConfig = function () {
       field('section_colors', 'artistColor').value     = self.config.get("artistColor", "");
       field('section_colors', 'albumColor').value      = self.config.get("albumColor", "");
       field('section_colors', 'streamInfoColor').value = self.config.get("streamInfoColor", "");
-      field('section_colors', 'controlColor').value    = self.config.get("controlColor", "");
+      field('section_colors', 'buttonColor').value     = self.config.get("buttonColor", "");
       field('section_colors', 'buttonBgColor').value   = self.config.get("buttonBgColor", "");
       field('section_colors', 'barTrackColor').value   = self.config.get("barTrackColor", "");
       field('section_colors', 'barTextColor').value    = self.config.get("barTextColor", "");
@@ -1424,7 +1424,7 @@ ControllerStylishPlayer.prototype.configSaveLayoutDesigner = function (data) {
 ControllerStylishPlayer.prototype.configSaveColors = function (data) {
   var self = this;
   var hexPattern = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
-  var fields = ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "controlColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"];
+  var fields = ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "buttonColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"];
 
   for (var i = 0; i < fields.length; i++) {
     var val = (data[fields[i]] || "").toString().trim();

@@ -18,7 +18,6 @@
   "PLAYER_TYPE_REEL_TO_REEL": "Cinta de Carrete",
   "PLAYER_TYPE_RADIO": "Radio",
   "PLAYER_TYPE_MATCH_SOURCE": "Coincidir con Fuente",
-  "PLAYER_TYPE_GLOBE": "Globo",
   "PLAYER_TYPE_RANDOM": "Aleatorio",
   "THEME": "Tema",
   "THEME_DESC": "Seleccione el tema de la interfaz para diferentes estilos visuales.",

@@ -18,7 +18,6 @@
   "PLAYER_TYPE_REEL_TO_REEL": "Bande Magnétique",
   "PLAYER_TYPE_RADIO": "Radio",
   "PLAYER_TYPE_MATCH_SOURCE": "Correspondre à la Source",
-  "PLAYER_TYPE_GLOBE": "Globe",
   "PLAYER_TYPE_RANDOM": "Aléatoire",
   "THEME": "Thème",
   "THEME_DESC": "Sélectionnez le thème de l'interface pour différents styles visuels.",

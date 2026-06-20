@@ -18,7 +18,6 @@
   "PLAYER_TYPE_REEL_TO_REEL": "オープンリール",
   "PLAYER_TYPE_RADIO": "ラジオ",
   "PLAYER_TYPE_MATCH_SOURCE": "ソースに合わせる",
-  "PLAYER_TYPE_GLOBE": "地球儀",
   "PLAYER_TYPE_RANDOM": "ランダム",
   "THEME": "テーマ",
   "THEME_DESC": "異なるビジュアルスタイルのUIテーマを選択します。",

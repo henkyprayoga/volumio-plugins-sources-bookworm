@@ -18,7 +18,6 @@
   "PLAYER_TYPE_REEL_TO_REEL": "Spolebånd",
   "PLAYER_TYPE_RADIO": "Radio",
   "PLAYER_TYPE_MATCH_SOURCE": "Match kilde",
-  "PLAYER_TYPE_GLOBE": "Globus",
   "PLAYER_TYPE_RANDOM": "Tilfeldig",
   "THEME": "Tema",
   "THEME_DESC": "Velg UI-tema for ulike visuelle stiler.",

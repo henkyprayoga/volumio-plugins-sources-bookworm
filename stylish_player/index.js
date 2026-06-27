@@ -465,6 +465,158 @@ ControllerStylishPlayer.prototype.streamOutViz = function () {
   }
 };
 
+ControllerStylishPlayer.prototype._resolveTrackPathFromUri = function (trackUri) {
+  if (!trackUri || typeof trackUri !== 'string') return null;
+
+  var raw = trackUri.trim();
+  if (!raw) return null;
+
+  try {
+    raw = decodeURIComponent(raw);
+  } catch (e) {
+    // Keep raw value if decoding fails.
+  }
+
+  raw = raw.split('?')[0].split('#')[0];
+
+  var resolved;
+  if (raw.startsWith('file://')) {
+    resolved = path.resolve(raw.replace(/^file:\/\//, '/'));
+  } else if (raw.startsWith('/')) {
+    resolved = path.resolve(raw);
+  } else if (raw.startsWith('music-library/')) {
+    resolved = path.resolve('/' + raw.replace(/^music-library\//, 'mnt/'));
+  } else if (raw.startsWith('mnt/')) {
+    resolved = path.resolve('/' + raw);
+  } else {
+    return null;
+  }
+
+  var allowedRoots = ['/mnt/', '/data/', '/media/'];
+  if (!allowedRoots.some(function (root) { return resolved === root.slice(0, -1) || resolved.startsWith(root); })) {
+    return null;
+  }
+
+  return resolved;
+};
+
+ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, filenameHint) {
+  if (!trackPath) return null;
+
+  var baseDir = trackPath;
+  try {
+    var st = fs.statSync(trackPath);
+    if (st.isFile()) {
+      baseDir = path.dirname(trackPath);
+    }
+  } catch (e) {
+    return null;
+  }
+
+  var candidates = [];
+
+  // Prefer files from ./fanart/ directory when available (e.g. fanart/01.jpg).
+  var fanartDir = path.join(baseDir, 'fanart');
+  try {
+    if (fs.existsSync(fanartDir) && fs.statSync(fanartDir).isDirectory()) {
+      var fanartEntries = fs.readdirSync(fanartDir)
+        .filter(function (name) {
+          return /\.(jpe?g|png|webp)$/i.test(name);
+        })
+        .sort();
+      if (fanartEntries.length > 0) {
+        return path.join(fanartDir, fanartEntries[0]);
+      }
+    }
+  } catch (e) {
+    // Ignore fanart directory read errors and continue fallback search.
+  }
+
+  if (filenameHint) {
+    var safeHint = path.basename(filenameHint);
+    if (safeHint && safeHint !== '.' && safeHint !== '..') {
+      candidates.push(safeHint);
+    }
+  }
+
+  candidates = candidates.concat([
+    'fanart.jpg',
+    'fanart.jpeg',
+    'fanart.png',
+    'fanart.webp',
+    'Fanart.jpg',
+    'Fanart.jpeg',
+    'Fanart.png',
+    'Fanart.webp',
+    'back.jpg',
+    'back.jpeg',
+    'back.png',
+    'folder.jpg',
+    'folder.jpeg',
+    'folder.png',
+    'cover.jpg',
+    'cover.jpeg',
+    'cover.png',
+  ]);
+
+  for (var i = 0; i < candidates.length; i++) {
+    var probe = path.resolve(path.join(baseDir, candidates[i]));
+    if (!probe.startsWith(baseDir + path.sep)) continue;
+    try {
+      var pst = fs.statSync(probe);
+      if (pst.isFile()) return probe;
+    } catch (e) {
+      // Candidate not found, continue.
+    }
+  }
+
+  return null;
+};
+
+ControllerStylishPlayer.prototype._findTrackAssetInTrackDir = function (trackPath, assetName) {
+  if (!trackPath || !assetName) return null;
+
+  var baseDir = trackPath;
+  try {
+    var st = fs.statSync(trackPath);
+    if (st.isFile()) {
+      baseDir = path.dirname(trackPath);
+    }
+  } catch (e) {
+    return null;
+  }
+
+  var normalized = String(assetName).trim().toLowerCase();
+  if (!normalized) return null;
+
+  if (normalized === 'fanart') {
+    return this._findFanartInTrackDir(trackPath, '');
+  }
+
+  var extPattern = /\.(jpe?g|png|webp)$/i;
+  var candidates = [];
+  if (extPattern.test(normalized)) {
+    candidates.push(path.basename(normalized));
+  } else {
+    candidates.push(normalized + '.png');
+    candidates.push(normalized + '.jpg');
+    candidates.push(normalized + '.jpeg');
+    candidates.push(normalized + '.webp');
+  }
+
+  for (var i = 0; i < candidates.length; i++) {
+    var probe = path.resolve(path.join(baseDir, candidates[i]));
+    if (!probe.startsWith(baseDir + path.sep)) continue;
+    try {
+      if (fs.statSync(probe).isFile()) return probe;
+    } catch (e) {
+      // Keep probing.
+    }
+  }
+
+  return null;
+};
+
 ControllerStylishPlayer.prototype.startServer = function () {
   var self = this;
   var defer = libQ.defer();
@@ -845,6 +997,89 @@ ControllerStylishPlayer.prototype.startServer = function () {
         "Cache-Control": "no-cache",
       });
       res.end(JSON.stringify(translations));
+      return;
+    }
+
+    // API endpoint: serve fanart image from the current track's directory.
+    if (urlPath === "/api/fanart") {
+      var fanartParams = new URL(req.url, "http://localhost").searchParams;
+      var trackUri = fanartParams.get("uri") || '';
+      var filenameHint = fanartParams.get("filename") || '';
+
+      var trackPath = self._resolveTrackPathFromUri(trackUri);
+      if (!trackPath) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Invalid or unsupported track URI." }));
+        return;
+      }
+
+      var fanartPath = self._findFanartInTrackDir(trackPath, filenameHint);
+      if (!fanartPath) {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Fanart not found in track directory." }));
+        return;
+      }
+
+      var fanartExt = path.extname(fanartPath).toLowerCase();
+      var fanartType = mimeTypes[fanartExt] || "application/octet-stream";
+
+      fs.readFile(fanartPath, function (fanartErr, data) {
+        if (fanartErr) {
+          res.writeHead(500, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "Failed to read fanart file." }));
+          return;
+        }
+        res.writeHead(200, {
+          "Content-Type": fanartType,
+          "Cache-Control": "no-cache",
+        });
+        res.end(data);
+      });
+      return;
+    }
+
+    // API endpoint: serve a named asset from the current track's directory.
+    // Examples: /api/track-asset?uri=...&name=cdart  or  name=back  or  name=fanart
+    if (urlPath === "/api/track-asset") {
+      var assetParams = new URL(req.url, "http://localhost").searchParams;
+      var assetTrackUri = assetParams.get("uri") || '';
+      var assetName = assetParams.get("name") || '';
+
+      if (!assetName) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Missing asset name." }));
+        return;
+      }
+
+      var assetTrackPath = self._resolveTrackPathFromUri(assetTrackUri);
+      if (!assetTrackPath) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Invalid or unsupported track URI." }));
+        return;
+      }
+
+      var assetPath = self._findTrackAssetInTrackDir(assetTrackPath, assetName);
+      if (!assetPath) {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Track asset not found." }));
+        return;
+      }
+
+      var assetExt = path.extname(assetPath).toLowerCase();
+      var assetType = mimeTypes[assetExt] || "application/octet-stream";
+
+      fs.readFile(assetPath, function (assetErr, data) {
+        if (assetErr) {
+          res.writeHead(500, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "Failed to read track asset file." }));
+          return;
+        }
+        res.writeHead(200, {
+          "Content-Type": assetType,
+          "Cache-Control": "no-cache",
+        });
+        res.end(data);
+      });
       return;
     }
 

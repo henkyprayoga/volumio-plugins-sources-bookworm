@@ -666,8 +666,11 @@ ControllerStylishPlayer.prototype.startServer = function () {
       return;
     }
 
-    // Parse the URL and resolve to prevent directory traversal
+    // Parse the URL and normalize API paths (treat /api/x and /api/x/ the same)
     var urlPath = new URL(req.url, "http://localhost").pathname;
+    if (urlPath.startsWith('/api/') && urlPath.length > 5) {
+      urlPath = urlPath.replace(/\/+$/, '');
+    }
 
     // ── Upload endpoint: accept zip files for peppy_meter or peppy_spectrum ──
     if (urlPath === "/api/upload-peppy-pack" && req.method === "POST") {
@@ -1085,6 +1088,13 @@ ControllerStylishPlayer.prototype.startServer = function () {
         });
         res.end(data);
       });
+      return;
+    }
+
+    // Never fall back to SPA HTML for unknown API routes.
+    if (urlPath.startsWith('/api/')) {
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Unknown API endpoint." }));
       return;
     }
 

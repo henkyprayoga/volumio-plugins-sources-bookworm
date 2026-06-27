@@ -500,7 +500,7 @@ ControllerStylishPlayer.prototype._resolveTrackPathFromUri = function (trackUri)
   return resolved;
 };
 
-ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, filenameHint) {
+ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, filenameHint, fanartIndex) {
   if (!trackPath) return null;
 
   var baseDir = trackPath;
@@ -515,6 +515,8 @@ ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, f
 
   var candidates = [];
 
+  var requestedIndex = Number.isFinite(Number(fanartIndex)) ? Math.max(0, parseInt(fanartIndex, 10)) : 0;
+
   // Prefer files from ./fanart/ directory when available (e.g. fanart/01.jpg).
   var fanartDir = path.join(baseDir, 'fanart');
   try {
@@ -525,7 +527,8 @@ ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, f
         })
         .sort();
       if (fanartEntries.length > 0) {
-        return path.join(fanartDir, fanartEntries[0]);
+        var idx = requestedIndex % fanartEntries.length;
+        return path.join(fanartDir, fanartEntries[idx]);
       }
     }
   } catch (e) {
@@ -573,7 +576,7 @@ ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, f
   return null;
 };
 
-ControllerStylishPlayer.prototype._findTrackAssetInTrackDir = function (trackPath, assetName) {
+ControllerStylishPlayer.prototype._findTrackAssetInTrackDir = function (trackPath, assetName, assetIndex) {
   if (!trackPath || !assetName) return null;
 
   var baseDir = trackPath;
@@ -590,7 +593,7 @@ ControllerStylishPlayer.prototype._findTrackAssetInTrackDir = function (trackPat
   if (!normalized) return null;
 
   if (normalized === 'fanart') {
-    return this._findFanartInTrackDir(trackPath, '');
+    return this._findFanartInTrackDir(trackPath, '', assetIndex);
   }
 
   var extPattern = /\.(jpe?g|png|webp)$/i;
@@ -1005,6 +1008,7 @@ ControllerStylishPlayer.prototype.startServer = function () {
       var fanartParams = new URL(req.url, "http://localhost").searchParams;
       var trackUri = fanartParams.get("uri") || '';
       var filenameHint = fanartParams.get("filename") || '';
+      var fanartIndex = fanartParams.get("index") || '0';
 
       var trackPath = self._resolveTrackPathFromUri(trackUri);
       if (!trackPath) {
@@ -1013,7 +1017,7 @@ ControllerStylishPlayer.prototype.startServer = function () {
         return;
       }
 
-      var fanartPath = self._findFanartInTrackDir(trackPath, filenameHint);
+      var fanartPath = self._findFanartInTrackDir(trackPath, filenameHint, fanartIndex);
       if (!fanartPath) {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Fanart not found in track directory." }));
@@ -1044,6 +1048,7 @@ ControllerStylishPlayer.prototype.startServer = function () {
       var assetParams = new URL(req.url, "http://localhost").searchParams;
       var assetTrackUri = assetParams.get("uri") || '';
       var assetName = assetParams.get("name") || '';
+      var assetIndex = assetParams.get("index") || '0';
 
       if (!assetName) {
         res.writeHead(400, { "Content-Type": "application/json" });
@@ -1058,7 +1063,7 @@ ControllerStylishPlayer.prototype.startServer = function () {
         return;
       }
 
-      var assetPath = self._findTrackAssetInTrackDir(assetTrackPath, assetName);
+      var assetPath = self._findTrackAssetInTrackDir(assetTrackPath, assetName, assetIndex);
       if (!assetPath) {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Track asset not found." }));

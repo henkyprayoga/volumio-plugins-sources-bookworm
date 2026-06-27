@@ -589,8 +589,10 @@ ControllerStylishPlayer.prototype._findTrackAssetInTrackDir = function (trackPat
     return null;
   }
 
-  var normalized = String(assetName).trim().toLowerCase();
-  if (!normalized) return null;
+  var rawName = String(assetName).trim();
+  if (!rawName) return null;
+
+  var normalized = rawName.toLowerCase();
 
   if (normalized === 'fanart') {
     return this._findFanartInTrackDir(trackPath, '', assetIndex);
@@ -598,22 +600,50 @@ ControllerStylishPlayer.prototype._findTrackAssetInTrackDir = function (trackPat
 
   var extPattern = /\.(jpe?g|png|webp)$/i;
   var candidates = [];
-  if (extPattern.test(normalized)) {
-    candidates.push(path.basename(normalized));
-  } else {
-    candidates.push(normalized + '.png');
-    candidates.push(normalized + '.jpg');
-    candidates.push(normalized + '.jpeg');
-    candidates.push(normalized + '.webp');
+  var rawCandidates = rawName.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+  if (!rawCandidates.length) rawCandidates = [rawName];
+
+  for (var ci = 0; ci < rawCandidates.length; ci++) {
+    var c = path.basename(rawCandidates[ci]);
+    if (!c || c === '.' || c === '..') continue;
+    if (extPattern.test(c)) {
+      candidates.push(c);
+    } else {
+      candidates.push(c + '.png');
+      candidates.push(c + '.jpg');
+      candidates.push(c + '.jpeg');
+      candidates.push(c + '.webp');
+    }
+  }
+
+  var dirEntries = [];
+  try {
+    dirEntries = fs.readdirSync(baseDir);
+  } catch (e) {
+    dirEntries = [];
   }
 
   for (var i = 0; i < candidates.length; i++) {
-    var probe = path.resolve(path.join(baseDir, candidates[i]));
+    var candidate = candidates[i];
+    var probe = path.resolve(path.join(baseDir, candidate));
     if (!probe.startsWith(baseDir + path.sep)) continue;
     try {
       if (fs.statSync(probe).isFile()) return probe;
     } catch (e) {
-      // Keep probing.
+      // Try case-insensitive match from directory listing.
+      var match = dirEntries.find(function (name) {
+        return name.toLowerCase() === candidate.toLowerCase();
+      });
+      if (match) {
+        var probe2 = path.resolve(path.join(baseDir, match));
+        if (probe2.startsWith(baseDir + path.sep)) {
+          try {
+            if (fs.statSync(probe2).isFile()) return probe2;
+          } catch (e2) {
+            // Keep probing.
+          }
+        }
+      }
     }
   }
 
@@ -1051,9 +1081,12 @@ ControllerStylishPlayer.prototype.startServer = function () {
       var assetParams = new URL(req.url, "http://localhost").searchParams;
       var assetTrackUri = assetParams.get("uri") || '';
       var assetName = assetParams.get("name") || '';
+      var assetCandidates = assetParams.get("candidates") || '';
       var assetIndex = assetParams.get("index") || '0';
 
-      if (!assetName) {
+      var assetLookup = assetCandidates || assetName;
+
+      if (!assetLookup) {
         res.writeHead(400, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Missing asset name." }));
         return;
@@ -1066,7 +1099,7 @@ ControllerStylishPlayer.prototype.startServer = function () {
         return;
       }
 
-      var assetPath = self._findTrackAssetInTrackDir(assetTrackPath, assetName, assetIndex);
+      var assetPath = self._findTrackAssetInTrackDir(assetTrackPath, assetLookup, assetIndex);
       if (!assetPath) {
         res.writeHead(404, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: "Track asset not found." }));

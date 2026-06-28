@@ -1745,7 +1745,7 @@ ControllerStylishPlayer.prototype.configSaveLayoutDesigner = function (data) {
 ControllerStylishPlayer.prototype.configSaveColors = function (data) {
   var self = this;
   self.logger.info('Stylish Player configSaveColors received: ' + JSON.stringify(data));
-  var hexPattern = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+  var hexPattern = /^(#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})|transparent)$/i;
   var fields = ["backgroundColor", "trackColor", "artistColor", "albumColor", "streamInfoColor", "buttonColor", "buttonBgColor", "barTrackColor", "barTextColor", "iconBtnColor"];
 
   for (var i = 0; i < fields.length; i++) {
@@ -1753,7 +1753,7 @@ ControllerStylishPlayer.prototype.configSaveColors = function (data) {
     if (!Object.prototype.hasOwnProperty.call(data, fields[i])) continue;
     var val = (data[fields[i]] || "").toString().trim();
     if (val && !hexPattern.test(val)) {
-      self.commandRouter.pushToastMessage("error", "Stylish Player", fields[i] + " must be a valid hex code (e.g. #1a2b3c).");
+      self.commandRouter.pushToastMessage("error", "Stylish Player", fields[i] + " must be a valid hex code (e.g. #1a2b3c) or 'transparent'.");
       return;
     }
     self.config.set(fields[i], val);

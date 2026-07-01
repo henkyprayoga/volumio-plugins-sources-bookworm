@@ -55,6 +55,14 @@
     "type": "string",
     "value": ""
   },
+  "fanartTvApiKey": {
+    "type": "string",
+    "value": ""
+  },
+  "displayFanartBackground": {
+    "type": "boolean",
+    "value": false
+  },
   "wallpaperUrl": {
     "type": "string",
     "value": ""

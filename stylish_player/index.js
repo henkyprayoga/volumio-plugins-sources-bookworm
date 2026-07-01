@@ -3,6 +3,7 @@
 var libQ = require("kew");
 var fs = require("fs-extra");
 var http = require("http");
+var https = require("https");
 var path = require("path");
 var os = require("os");
 const { spawn, spawnSync, exec, execSync } = require('child_process');
@@ -498,6 +499,149 @@ ControllerStylishPlayer.prototype._resolveTrackPathFromUri = function (trackUri)
   }
 
   return resolved;
+};
+
+// ───────────────────────────────────────────────────────────────────────
+// fanart.tv API integration
+// Docs: https://github.com/fanart-tv/fanart.tv-api
+// Uses MusicBrainz to resolve artist/album → MBIDs first, then queries
+// fanart.tv for image URLs. All requests use built-in https module (no
+// extra dependencies). Responses are cached in-memory to avoid rate limits.
+// ───────────────────────────────────────────────────────────────────────
+
+var FANART_TV_CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24h
+var MB_MIN_INTERVAL_MS = 1100; // MusicBrainz: max 1 req/sec
+var FANART_TV_USER_AGENT = 'StylishPlayer/1.0 (+https://github.com/kjavia/Volumio-UI-React)';
+var _fanartCache = new Map(); // key: "artist|album" → { at, data }
+var _mbLastRequestAt = 0;
+
+function _fanartHttpsGetJson(urlString, headers) {
+  return new Promise(function (resolve, reject) {
+    try {
+      var opts = new URL(urlString);
+      var reqOpts = {
+        method: 'GET',
+        hostname: opts.hostname,
+        path: opts.pathname + opts.search,
+        headers: Object.assign({ 'User-Agent': FANART_TV_USER_AGENT, 'Accept': 'application/json' }, headers || {}),
+        timeout: 10000,
+      };
+      var req = https.request(reqOpts, function (res) {
+        var chunks = [];
+        res.on('data', function (c) { chunks.push(c); });
+        res.on('end', function () {
+          var body = Buffer.concat(chunks).toString('utf8');
+          if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
+            try { resolve(JSON.parse(body)); }
+            catch (e) { reject(new Error('Invalid JSON response: ' + e.message)); }
+          } else if (res.statusCode === 404) {
+            resolve(null);
+          } else {
+            reject(new Error('HTTP ' + res.statusCode + ' ' + (res.statusMessage || '')));
+          }
+        });
+      });
+      req.on('error', reject);
+      req.on('timeout', function () { req.destroy(new Error('Request timed out')); });
+      req.end();
+    } catch (e) { reject(e); }
+  });
+}
+
+function _mbRateLimitDelay() {
+  var now = Date.now();
+  var elapsed = now - _mbLastRequestAt;
+  var wait = Math.max(0, MB_MIN_INTERVAL_MS - elapsed);
+  _mbLastRequestAt = now + wait;
+  return new Promise(function (r) { setTimeout(r, wait); });
+}
+
+ControllerStylishPlayer.prototype.getAlbumFanart = function (artist, album) {
+  // Returns a Promise resolving to a normalized shape:
+  //   { artist, album, artistMbid, releaseGroupMbid,
+  //     images: [url...],            // combined ordered list for consumers
+  //     albumcover: [url...],
+  //     cdart: [url...],
+  //     artistbackground: [url...] }
+  // Cached for 24h keyed by artist|album.
+  var self = this;
+  var apiKey = (self.config.get('fanartTvApiKey', '') || '').toString().trim();
+  if (!apiKey) return Promise.resolve({ error: 'No fanart.tv API key configured.', images: [] });
+  if (!artist) return Promise.resolve({ error: 'Missing artist.', images: [] });
+
+  var cacheKey = String(artist).toLowerCase().trim() + '|' + String(album || '').toLowerCase().trim();
+  var cached = _fanartCache.get(cacheKey);
+  if (cached && (Date.now() - cached.at) < FANART_TV_CACHE_TTL_MS) {
+    return Promise.resolve(cached.data);
+  }
+
+  return self._resolveMbidsPromise(artist, album)
+    .then(function (mbids) {
+      var artistMbid = mbids.artistMbid;
+      var releaseGroupMbid = mbids.releaseGroupMbid;
+      if (!artistMbid) {
+        var empty = { artist: artist, album: album, artistMbid: null, releaseGroupMbid: null, images: [], albumcover: [], cdart: [], artistbackground: [] };
+        _fanartCache.set(cacheKey, { at: Date.now(), data: empty });
+        return empty;
+      }
+      var fanartUrl = 'https://webservice.fanart.tv/v3/music/' + encodeURIComponent(artistMbid) + '?api_key=' + encodeURIComponent(apiKey);
+      return _fanartHttpsGetJson(fanartUrl).then(function (json) {
+        var albumcover = [];
+        var cdart = [];
+        var artistbackground = [];
+        if (json && typeof json === 'object') {
+          if (json.artistbackground && json.artistbackground.length) {
+            artistbackground = json.artistbackground.map(function (i) { return i.url; }).filter(Boolean);
+          }
+          if (json.albums && releaseGroupMbid && json.albums[releaseGroupMbid]) {
+            var a = json.albums[releaseGroupMbid];
+            if (Array.isArray(a.albumcover)) albumcover = a.albumcover.map(function (i) { return i.url; }).filter(Boolean);
+            if (Array.isArray(a.cdart)) cdart = a.cdart.map(function (i) { return i.url; }).filter(Boolean);
+          }
+        }
+        // Combined list: prefer artist backgrounds first (best for wallpaper),
+        // then album covers, then cdart.
+        var images = artistbackground.concat(albumcover).concat(cdart);
+        var data = {
+          artist: artist,
+          album: album,
+          artistMbid: artistMbid,
+          releaseGroupMbid: releaseGroupMbid,
+          images: images,
+          albumcover: albumcover,
+          cdart: cdart,
+          artistbackground: artistbackground,
+        };
+        _fanartCache.set(cacheKey, { at: Date.now(), data: data });
+        return data;
+      });
+    })
+    .catch(function (err) {
+      self.logger.warn('Stylish Player: fanart.tv lookup failed for "' + artist + ' / ' + album + '": ' + err.message);
+      return { error: err.message, images: [], albumcover: [], cdart: [], artistbackground: [] };
+    });
+};
+
+// Cleaner promise-returning variant of _resolveMbids that always resolves.
+ControllerStylishPlayer.prototype._resolveMbidsPromise = function (artist, album) {
+  var q;
+  if (album) {
+    q = 'release:"' + album.replace(/"/g, '\\"') + '" AND artist:"' + (artist || '').replace(/"/g, '\\"') + '"';
+  } else {
+    q = 'artist:"' + (artist || '').replace(/"/g, '\\"') + '"';
+  }
+  var url = 'https://musicbrainz.org/ws/2/release-group?query=' + encodeURIComponent(q) + '&limit=1&fmt=json';
+  return _mbRateLimitDelay().then(function () { return _fanartHttpsGetJson(url); }).then(function (json) {
+    if (!json || !Array.isArray(json['release-groups']) || !json['release-groups'].length) {
+      return { artistMbid: null, releaseGroupMbid: null };
+    }
+    var rg = json['release-groups'][0];
+    var artistMbid = null;
+    if (Array.isArray(rg['artist-credit']) && rg['artist-credit'].length) {
+      artistMbid = rg['artist-credit'][0].artist && rg['artist-credit'][0].artist.id;
+    }
+    return { artistMbid: artistMbid || null, releaseGroupMbid: rg.id || null };
+  });
 };
 
 ControllerStylishPlayer.prototype._findFanartInTrackDir = function (trackPath, filenameHint, fanartIndex) {
@@ -1075,6 +1219,32 @@ ControllerStylishPlayer.prototype.startServer = function () {
       return;
     }
 
+    // API endpoint: return fanart.tv images for a given artist / album.
+    // Example: /api/fanart-tv?artist=Pink%20Floyd&album=The%20Wall
+    if (urlPath === "/api/fanart-tv") {
+      var ftParams = new URL(req.url, "http://localhost").searchParams;
+      var ftArtist = (ftParams.get("artist") || "").trim();
+      var ftAlbum = (ftParams.get("album") || "").trim();
+
+      if (!ftArtist) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Missing 'artist' query parameter." }));
+        return;
+      }
+
+      self.getAlbumFanart(ftArtist, ftAlbum).then(function (result) {
+        res.writeHead(200, {
+          "Content-Type": "application/json",
+          "Cache-Control": "public, max-age=3600",
+        });
+        res.end(JSON.stringify(result || { images: [] }));
+      }).catch(function (err) {
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: err && err.message ? err.message : "fanart.tv lookup failed." }));
+      });
+      return;
+    }
+
     // API endpoint: serve a named asset from the current track's directory.
     // Examples: /api/track-asset?uri=...&name=cdart  or  name=back  or  name=fanart
     if (urlPath === "/api/track-asset") {
@@ -1292,6 +1462,8 @@ ControllerStylishPlayer.prototype._buildConfigData = function () {
     analogClockShowDate: self.config.get("analogClockShowDate", true),
     weatherBackgroundColor: self.config.get("weatherBackgroundColor", ""),
     unsplashApiKey: self.config.get("unsplashApiKey", ""),
+    fanartTvApiKey: self.config.get("fanartTvApiKey", ""),
+    displayFanartBackground: self.config.get("displayFanartBackground", false),
     wallpaperUrl: self.config.get("wallpaperUrl", ""),
     wallpaperShowTime: self.config.get("wallpaperShowTime", true),
     wallpaperShowSeconds: self.config.get("wallpaperShowSeconds", false),
@@ -1406,6 +1578,8 @@ ControllerStylishPlayer.prototype.getUIConfig = function () {
       field('section_player_config', 'useCustomLayout').value   = self.config.get("useCustomLayout", false);
       setSelect('section_player_config', 'vizType', 'vizType', 'spectrum');
       field('section_player_config', 'spectrumOptions').value   = self.config.get("spectrumOptions", "");
+      field('section_player_config', 'fanartTvApiKey').value    = self.config.get("fanartTvApiKey", "");
+      field('section_player_config', 'displayFanartBackground').value = self.config.get("displayFanartBackground", false);
 
       // Dynamically populate peppy meter folder options from disk
       var peppyMeterFolderField = field('section_player_config', 'peppyMeterFolder');
@@ -1679,6 +1853,8 @@ ControllerStylishPlayer.prototype.configSavePlayerConfig = function (data) {
   var showTrackPanel = data["showTrackPanel"] === true;
   var vizType = data["vizType"] ? data["vizType"].value : "spectrum";
   var spectrumOptions = (data["spectrumOptions"] || "").toString().trim();
+  var fanartTvApiKey = (data["fanartTvApiKey"] || "").toString().trim();
+  var displayFanartBackground = data["displayFanartBackground"] === true;
 
   // Validate JSON if a value is provided
   if (spectrumOptions) {
@@ -1701,6 +1877,8 @@ ControllerStylishPlayer.prototype.configSavePlayerConfig = function (data) {
   self.config.set("useCustomLayout", data["useCustomLayout"] === true);
   self.config.set("vizType", vizType);
   self.config.set("spectrumOptions", spectrumOptions);
+  self.config.set("fanartTvApiKey", fanartTvApiKey);
+  self.config.set("displayFanartBackground", displayFanartBackground);
 
   if (vizType === "peppyMeter") {
     var peppyMeterFolder = data["peppyMeterFolder"] ? (typeof data["peppyMeterFolder"] === 'object' ? data["peppyMeterFolder"].value : data["peppyMeterFolder"]) : "";

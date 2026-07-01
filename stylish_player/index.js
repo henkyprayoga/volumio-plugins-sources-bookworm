@@ -631,24 +631,47 @@ ControllerStylishPlayer.prototype.getAlbumFanart = function (artist, album) {
 };
 
 // Cleaner promise-returning variant of _resolveMbids that always resolves.
+// Tries `release:"album" AND artist:"artist"` first (to get a releaseGroupMbid
+// for album-specific art like albumcover/cdart), and falls back to an
+// artist-only lookup when the album search returns no matches. The fallback
+// still yields an artistMbid so fanart.tv can return artistbackground images.
 ControllerStylishPlayer.prototype._resolveMbidsPromise = function (artist, album) {
-  var q;
-  if (album) {
-    q = 'release:"' + album.replace(/"/g, '\\"') + '" AND artist:"' + (artist || '').replace(/"/g, '\\"') + '"';
-  } else {
-    q = 'artist:"' + (artist || '').replace(/"/g, '\\"') + '"';
-  }
+  var self = this;
+  var artistOnly = function () {
+    if (!artist) return Promise.resolve({ artistMbid: null, releaseGroupMbid: null });
+    var aq = 'artist:"' + artist.replace(/"/g, '\\"') + '"';
+    var aUrl = 'https://musicbrainz.org/ws/2/artist?query=' + encodeURIComponent(aq) + '&limit=1&fmt=json';
+    return _mbRateLimitDelay().then(function () { return _fanartHttpsGetJson(aUrl); }).then(function (json) {
+      if (!json || !Array.isArray(json.artists) || !json.artists.length) {
+        return { artistMbid: null, releaseGroupMbid: null };
+      }
+      return { artistMbid: json.artists[0].id || null, releaseGroupMbid: null };
+    }).catch(function (err) {
+      self.logger.warn('Stylish Player: MB artist lookup failed for "' + artist + '": ' + err.message);
+      return { artistMbid: null, releaseGroupMbid: null };
+    });
+  };
+
+  if (!album) return artistOnly();
+
+  var q = 'release:"' + album.replace(/"/g, '\\"') + '" AND artist:"' + (artist || '').replace(/"/g, '\\"') + '"';
   var url = 'https://musicbrainz.org/ws/2/release-group?query=' + encodeURIComponent(q) + '&limit=1&fmt=json';
   return _mbRateLimitDelay().then(function () { return _fanartHttpsGetJson(url); }).then(function (json) {
     if (!json || !Array.isArray(json['release-groups']) || !json['release-groups'].length) {
-      return { artistMbid: null, releaseGroupMbid: null };
+      // No album match — fall back to artist-only so we can still return
+      // artistbackground images.
+      return artistOnly();
     }
     var rg = json['release-groups'][0];
     var artistMbid = null;
     if (Array.isArray(rg['artist-credit']) && rg['artist-credit'].length) {
       artistMbid = rg['artist-credit'][0].artist && rg['artist-credit'][0].artist.id;
     }
-    return { artistMbid: artistMbid || null, releaseGroupMbid: rg.id || null };
+    if (!artistMbid) return artistOnly();
+    return { artistMbid: artistMbid, releaseGroupMbid: rg.id || null };
+  }).catch(function (err) {
+    self.logger.warn('Stylish Player: MB release-group lookup failed, falling back to artist-only: ' + err.message);
+    return artistOnly();
   });
 };
 

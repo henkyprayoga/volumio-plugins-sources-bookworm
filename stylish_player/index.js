@@ -599,6 +599,14 @@ ControllerStylishPlayer.prototype.getAlbumFanart = function (artist, album) {
             if (Array.isArray(a.cdart)) cdart = a.cdart.map(function (i) { return i.url; }).filter(Boolean);
           }
         }
+        // Route all image URLs through our proxy endpoint so the browser
+        // never talks to fanart.tv directly. This avoids CORS issues (needed
+        // for canvas/crossOrigin usage in PeppyMeter) and lets us cache
+        // images if desired later.
+        var toProxy = function (u) { return '/api/fanart-tv-image?url=' + encodeURIComponent(u); };
+        albumcover = albumcover.map(toProxy);
+        cdart = cdart.map(toProxy);
+        artistbackground = artistbackground.map(toProxy);
         // Combined list: prefer artist backgrounds first (best for wallpaper),
         // then album covers, then cdart.
         var images = artistbackground.concat(albumcover).concat(cdart);
@@ -1242,6 +1250,64 @@ ControllerStylishPlayer.prototype.startServer = function () {
         res.writeHead(500, { "Content-Type": "application/json" });
         res.end(JSON.stringify({ error: err && err.message ? err.message : "fanart.tv lookup failed." }));
       });
+      return;
+    }
+
+    // API endpoint: proxy an image from fanart.tv so the browser never
+    // makes a cross-origin request (avoids CORS issues with canvas/img
+    // crossOrigin usage). Only allow the fanart.tv asset hosts.
+    if (urlPath === "/api/fanart-tv-image") {
+      var imgParams = new URL(req.url, "http://localhost").searchParams;
+      var imgUrlRaw = (imgParams.get("url") || "").trim();
+      if (!imgUrlRaw) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Missing 'url' query parameter." }));
+        return;
+      }
+      var parsedImg;
+      try { parsedImg = new URL(imgUrlRaw); } catch (e) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Invalid URL." }));
+        return;
+      }
+      // Only allow https to fanart.tv asset hosts (prevents SSRF).
+      var allowedHosts = ['assets.fanart.tv', 'fanart.tv', 'webservice.fanart.tv'];
+      if (parsedImg.protocol !== 'https:' || allowedHosts.indexOf(parsedImg.hostname) === -1) {
+        res.writeHead(403, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "URL host is not allowed." }));
+        return;
+      }
+
+      var proxyReq = https.request({
+        method: 'GET',
+        hostname: parsedImg.hostname,
+        path: parsedImg.pathname + parsedImg.search,
+        headers: { 'User-Agent': FANART_TV_USER_AGENT, 'Accept': 'image/*' },
+        timeout: 15000,
+      }, function (upstream) {
+        var status = upstream.statusCode || 502;
+        if (status < 200 || status >= 400) {
+          res.writeHead(status, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "Upstream returned HTTP " + status }));
+          upstream.resume();
+          return;
+        }
+        var passHeaders = {
+          "Content-Type": upstream.headers['content-type'] || 'application/octet-stream',
+          "Cache-Control": "public, max-age=86400",
+        };
+        if (upstream.headers['content-length']) {
+          passHeaders["Content-Length"] = upstream.headers['content-length'];
+        }
+        res.writeHead(200, passHeaders);
+        upstream.pipe(res);
+      });
+      proxyReq.on('error', function (err) {
+        res.writeHead(502, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: "Proxy fetch failed: " + err.message }));
+      });
+      proxyReq.on('timeout', function () { proxyReq.destroy(new Error('Proxy timeout')); });
+      proxyReq.end();
       return;
     }
 

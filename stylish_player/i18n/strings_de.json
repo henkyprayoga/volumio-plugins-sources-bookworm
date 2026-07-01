@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Suchleisten-Griff ausblenden",
   "HIDE_SEEK_HANDLE_DESC": "Den ziehbaren Griff der Suchleiste für ein saubereres Aussehen ausblenden.",
+  "HIDE_TRACK_TIMES": "Titelzeiten ausblenden",
+  "HIDE_TRACK_TIMES_DESC": "Blendet die verstrichene und die verbleibende/Gesamtdauer unterhalb der Suchleiste aus.",
   "SHOW_REMAINING_TIME": "Restzeit anzeigen",
   "SHOW_REMAINING_TIME_DESC": "Restzeit statt Gesamtdauer auf der rechten Seite der Suchleiste anzeigen.",
   "CLOCK": "Uhr",

@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Masquer le curseur de lecture",
   "HIDE_SEEK_HANDLE_DESC": "Masquer le curseur déplaçable de la barre de lecture pour un aspect plus épuré.",
+  "HIDE_TRACK_TIMES": "Masquer les durées",
+  "HIDE_TRACK_TIMES_DESC": "Masque les libellés de temps écoulé et restant/total sous la barre de lecture.",
   "SHOW_REMAINING_TIME": "Afficher le temps restant",
   "SHOW_REMAINING_TIME_DESC": "Afficher le temps restant au lieu de la durée totale à droite de la barre de lecture.",
   "CLOCK": "Clock",

@@ -31,6 +31,10 @@
     "type": "boolean",
     "value": false
   },
+  "hideTrackTimes": {
+    "type": "boolean",
+    "value": false
+  },
   "showRemainingTime": {
     "type": "boolean",
     "value": false

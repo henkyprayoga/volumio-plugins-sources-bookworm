@@ -1247,6 +1247,7 @@ ControllerStylishPlayer.prototype._buildConfigData = function () {
     theme: self.config.get("theme", "skeuomorphic"),
     showPlayerControls: self.config.get("showPlayerControls", true),
     hideSeekHandle: self.config.get("hideSeekHandle", false),
+    hideTrackTimes: self.config.get("hideTrackTimes", false),
     showRemainingTime: self.config.get("showRemainingTime", false),
     albumArtMaxSpace: self.config.get("albumArtMaxSpace", false),
     albumArtAnimated: self.config.get("albumArtAnimated", true),
@@ -1388,6 +1389,7 @@ ControllerStylishPlayer.prototype.getUIConfig = function () {
       setSelect('section_player_config', 'playerType', 'playerType', 'albumArt');
       field('section_player_config', 'showPlayerControls').value = self.config.get("showPlayerControls", true);
       field('section_player_config', 'hideSeekHandle').value    = self.config.get("hideSeekHandle", false);
+      field('section_player_config', 'hideTrackTimes').value    = self.config.get("hideTrackTimes", false);
       field('section_player_config', 'showRemainingTime').value = self.config.get("showRemainingTime", false);
       field('section_player_config', 'albumArtMaxSpace').value  = self.config.get("albumArtMaxSpace", false);
       field('section_player_config', 'albumArtAnimated').value  = self.config.get("albumArtAnimated", true);
@@ -1664,6 +1666,7 @@ ControllerStylishPlayer.prototype.configSavePlayerConfig = function (data) {
   var playerType = data["playerType"] ? data["playerType"].value : "albumArt";
   var showPlayerControls = data["showPlayerControls"] !== false;
   var hideSeekHandle = data["hideSeekHandle"] === true;
+  var hideTrackTimes = data["hideTrackTimes"] === true;
   var showRemainingTime = data["showRemainingTime"] === true;
   var albumArtMaxSpace = data["albumArtMaxSpace"] === true;
   var albumArtAnimated = data["albumArtAnimated"] !== false;
@@ -1687,6 +1690,7 @@ ControllerStylishPlayer.prototype.configSavePlayerConfig = function (data) {
   self.config.set("playerType", playerType);
   self.config.set("showPlayerControls", showPlayerControls);
   self.config.set("hideSeekHandle", hideSeekHandle);
+  self.config.set("hideTrackTimes", hideTrackTimes);
   self.config.set("showRemainingTime", showRemainingTime);
   self.config.set("albumArtMaxSpace", albumArtMaxSpace);
   self.config.set("albumArtAnimated", albumArtAnimated);

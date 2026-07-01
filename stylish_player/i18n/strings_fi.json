@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Piilota hakupalkin kahva",
   "HIDE_SEEK_HANDLE_DESC": "Piilota hakupalkin vedettävä kahva siistimmän ulkoasun saavuttamiseksi.",
+  "HIDE_TRACK_TIMES": "Piilota kappaleen ajat",
+  "HIDE_TRACK_TIMES_DESC": "Piilottaa kuluneen ja jäljellä olevan/kokonaisajan tunnisteet hakupalkin alta.",
   "SHOW_REMAINING_TIME": "Näytä jäljellä oleva aika",
   "SHOW_REMAINING_TIME_DESC": "Näytä jäljellä oleva aika kokonaiskeston sijaan hakupalkin oikealla puolella.",
   "CLOCK": "Clock",

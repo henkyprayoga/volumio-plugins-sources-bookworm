@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Ocultar alça da barra",
   "HIDE_SEEK_HANDLE_DESC": "Ocultar a alça arrastável na barra de busca para uma aparência mais limpa.",
+  "HIDE_TRACK_TIMES": "Ocultar tempos da faixa",
+  "HIDE_TRACK_TIMES_DESC": "Oculta os rótulos de tempo decorrido e restante/total abaixo da barra de busca.",
   "SHOW_REMAINING_TIME": "Mostrar tempo restante",
   "SHOW_REMAINING_TIME_DESC": "Mostrar o tempo restante em vez da duração total no lado direito da barra de busca.",
   "CLOCK": "Clock",

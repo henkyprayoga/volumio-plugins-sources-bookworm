@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Nascondi maniglia barra",
   "HIDE_SEEK_HANDLE_DESC": "Nascondi la maniglia trascinabile sulla barra di ricerca per un aspetto più pulito.",
+  "HIDE_TRACK_TIMES": "Nascondi tempi brano",
+  "HIDE_TRACK_TIMES_DESC": "Nasconde le etichette del tempo trascorso e rimanente/totale sotto la barra di ricerca.",
   "SHOW_REMAINING_TIME": "Mostra tempo rimanente",
   "SHOW_REMAINING_TIME_DESC": "Mostra il tempo rimanente invece della durata totale sul lato destro della barra di ricerca.",
   "CLOCK": "Clock",

@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Скрыть ползунок",
   "HIDE_SEEK_HANDLE_DESC": "Скрыть перетаскиваемый ползунок на полосе воспроизведения для более чистого вида.",
+  "HIDE_TRACK_TIMES": "Скрыть время трека",
+  "HIDE_TRACK_TIMES_DESC": "Скрывает метки прошедшего и оставшегося/общего времени под ползунком.",
   "SHOW_REMAINING_TIME": "Показать оставшееся время",
   "SHOW_REMAINING_TIME_DESC": "Показывать оставшееся время вместо общей продолжительности справа от полосы воспроизведения.",
   "CLOCK": "Clock",

@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Απόκρυψη λαβής μπάρας",
   "HIDE_SEEK_HANDLE_DESC": "Απόκρυψη της συρόμενης λαβής στη μπάρα αναζήτησης για πιο καθαρή εμφάνιση.",
+  "HIDE_TRACK_TIMES": "Απόκρυψη χρόνων κομματιού",
+  "HIDE_TRACK_TIMES_DESC": "Απόκρυψη των ετικετών παρελθόντος και υπολειπόμενου/συνολικού χρόνου κάτω από τη μπάρα αναζήτησης.",
   "SHOW_REMAINING_TIME": "Εμφάνιση υπολειπόμενου χρόνου",
   "SHOW_REMAINING_TIME_DESC": "Εμφάνιση υπολειπόμενου χρόνου αντί συνολικής διάρκειας στη δεξιά πλευρά της μπάρας αναζήτησης.",
   "CLOCK": "Clock",

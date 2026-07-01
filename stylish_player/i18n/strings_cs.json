@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Skrýt táhlo ukazatele",
   "HIDE_SEEK_HANDLE_DESC": "Skrýt přetahovatelné táhlo na ukazateli průběhu pro čistší vzhled.",
+  "HIDE_TRACK_TIMES": "Skrýt časy skladby",
+  "HIDE_TRACK_TIMES_DESC": "Skryje uplynulý a zbývající/celkový čas pod ukazatelem.",
   "SHOW_REMAINING_TIME": "Zobrazit zbývající čas",
   "SHOW_REMAINING_TIME_DESC": "Zobrazit zbývající čas místo celkové doby na pravé straně ukazatele průběhu.",
   "CLOCK": "Clock",

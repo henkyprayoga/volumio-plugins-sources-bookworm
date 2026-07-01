@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Ukryj uchwyt paska",
   "HIDE_SEEK_HANDLE_DESC": "Ukryj przeciągany uchwyt na pasku wyszukiwania dla czystszego wyglądu.",
+  "HIDE_TRACK_TIMES": "Ukryj czasy utworu",
+  "HIDE_TRACK_TIMES_DESC": "Ukrywa etykiety czasu, jaki upłynął, oraz czasu pozostałego/całkowitego pod paskiem.",
   "SHOW_REMAINING_TIME": "Pokaż pozostały czas",
   "SHOW_REMAINING_TIME_DESC": "Pokaż pozostały czas zamiast całkowitego czasu trwania po prawej stronie paska wyszukiwania.",
   "CLOCK": "Clock",

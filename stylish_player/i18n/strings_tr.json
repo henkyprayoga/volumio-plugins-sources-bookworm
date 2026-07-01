@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Arama çubuğu tutamağını gizle",
   "HIDE_SEEK_HANDLE_DESC": "Daha temiz bir görünüm için arama çubuğundaki sürüklenebilir tutamağı gizle.",
+  "HIDE_TRACK_TIMES": "Parça sürelerini gizle",
+  "HIDE_TRACK_TIMES_DESC": "Arama çubuğunun altındaki geçen ve kalan/toplam süre etiketlerini gizler.",
   "SHOW_REMAINING_TIME": "Kalan süreyi göster",
   "SHOW_REMAINING_TIME_DESC": "Arama çubuğunun sağ tarafında toplam süre yerine kalan süreyi göster.",
   "CLOCK": "Clock",

@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "탐색 바 핸들 숨기기",
   "HIDE_SEEK_HANDLE_DESC": "깔끔한 외관을 위해 탐색 바의 드래그 핸들을 숨깁니다.",
+  "HIDE_TRACK_TIMES": "트랙 시간 숨기기",
+  "HIDE_TRACK_TIMES_DESC": "탐색 바 아래의 경과 시간과 남은 시간/총 시간 레이블을 숨깁니다.",
   "SHOW_REMAINING_TIME": "남은 시간 표시",
   "SHOW_REMAINING_TIME_DESC": "탐색 바 오른쪽에 전체 길이 대신 남은 시간을 표시합니다.",
   "CLOCK": "Clock",

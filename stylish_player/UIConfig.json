@@ -62,7 +62,7 @@
       },
       "saveButton": {
         "label": "TRANSLATE.SAVE",
-        "data": ["playerType", "theme", "showPlayerControls", "showRemainingTime", "albumArtMaxSpace", "albumArtAnimated", "showTrackPanel", "useCustomLayout", "vizType", "spectrumOptions", "peppyMeterFolder", "peppyMeterModel", "peppySpectrumFolder", "peppySpectrumModel", "fanartTvApiKey", "displayFanartBackground"]
+        "data": ["playerType", "theme", "showPlayerControls", "hideTrackTimes", "showRemainingTime", "albumArtMaxSpace", "albumArtAnimated", "showTrackPanel", "useCustomLayout", "vizType", "spectrumOptions", "peppyMeterFolder", "peppyMeterModel", "peppySpectrumFolder", "peppySpectrumModel", "fanartTvApiKey", "displayFanartBackground"]
       },
       "content": [
         {
@@ -123,11 +123,22 @@
           "value": false
         },
         {
+          "id": "hideTrackTimes",
+          "element": "switch",
+          "label": "TRANSLATE.HIDE_TRACK_TIMES",
+          "doc": "TRANSLATE.HIDE_TRACK_TIMES_DESC",
+          "value": false
+        },
+        {
           "id": "showRemainingTime",
           "element": "switch",
           "label": "TRANSLATE.SHOW_REMAINING_TIME",
           "doc": "TRANSLATE.SHOW_REMAINING_TIME_DESC",
-          "value": false
+          "value": false,
+          "visibleIf": {
+            "field": "hideTrackTimes",
+            "value": false
+          }
         },
         {
           "id": "albumArtMaxSpace",

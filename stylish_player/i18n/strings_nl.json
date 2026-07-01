@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Zoekbalk-handvat verbergen",
   "HIDE_SEEK_HANDLE_DESC": "Verberg het sleepbare handvat op de zoekbalk voor een schoner uiterlijk.",
+  "HIDE_TRACK_TIMES": "Tracktijden verbergen",
+  "HIDE_TRACK_TIMES_DESC": "Verbergt de verstreken en resterende/totale tijdlabels onder de zoekbalk.",
   "SHOW_REMAINING_TIME": "Resterende tijd tonen",
   "SHOW_REMAINING_TIME_DESC": "Toon de resterende tijd in plaats van de totale duur aan de rechterkant van de zoekbalk.",
   "CLOCK": "Clock",

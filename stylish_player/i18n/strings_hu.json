@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Kereső sáv fogantyú elrejtése",
   "HIDE_SEEK_HANDLE_DESC": "A kereső sáv húzható fogantyújának elrejtése a tisztább megjelenés érdekében.",
+  "HIDE_TRACK_TIMES": "Sáv idők elrejtése",
+  "HIDE_TRACK_TIMES_DESC": "Elrejti az eltelt és hátralévő/teljes idő címkéket a keresősáv alatt.",
   "SHOW_REMAINING_TIME": "Hátralévő idő mutatása",
   "SHOW_REMAINING_TIME_DESC": "A hátralévő idő megjelenítése a teljes időtartam helyett a kereső sáv jobb oldalán.",
   "CLOCK": "Clock",

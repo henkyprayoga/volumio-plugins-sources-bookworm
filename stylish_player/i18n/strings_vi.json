@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "Ẩn tay nắm thanh tìm kiếm",
   "HIDE_SEEK_HANDLE_DESC": "Ẩn tay nắm kéo trên thanh tìm kiếm để giao diện gọn gàng hơn.",
+  "HIDE_TRACK_TIMES": "Ẩn thời gian bài hát",
+  "HIDE_TRACK_TIMES_DESC": "Ẩn nhãn thời gian đã trôi qua và thời gian còn lại/tổng bên dưới thanh tìm kiếm.",
   "SHOW_REMAINING_TIME": "Hiển thị thời gian còn lại",
   "SHOW_REMAINING_TIME_DESC": "Hiển thị thời gian còn lại thay vì tổng thời lượng ở bên phải thanh tìm kiếm.",
   "CLOCK": "Clock",

@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "ซ่อนตัวจับแถบค้นหา",
   "HIDE_SEEK_HANDLE_DESC": "ซ่อนตัวจับที่ลากได้บนแถบค้นหาเพื่อรูปลักษณ์ที่สะอาดขึ้น",
+  "HIDE_TRACK_TIMES": "ซ่อนเวลาเพลง",
+  "HIDE_TRACK_TIMES_DESC": "ซ่อนป้ายเวลาที่ผ่านไปและเวลาที่เหลือ/รวม ใต้แถบเลื่อน",
   "SHOW_REMAINING_TIME": "แสดงเวลาที่เหลือ",
   "SHOW_REMAINING_TIME_DESC": "แสดงเวลาที่เหลือแทนระยะเวลาทั้งหมดทางด้านขวาของแถบค้นหา",
   "CLOCK": "Clock",

@@ -127,6 +127,8 @@
   "ICON_BTN_COLOR_DESC": "Override the color of secondary icon buttons (shuffle, repeat, favourite, queue, browse). Enter a hex code (e.g. #cccccc). Leave empty to use the theme default.",
   "HIDE_SEEK_HANDLE": "隱藏進度條滑塊",
   "HIDE_SEEK_HANDLE_DESC": "隱藏進度條上的可拖動滑塊以獲得更簡潔的外觀。",
+  "HIDE_TRACK_TIMES": "隱藏曲目時間",
+  "HIDE_TRACK_TIMES_DESC": "隱藏搜尋列下方的已播放時間和剩餘/總時長標籤。",
   "SHOW_REMAINING_TIME": "顯示剩餘時間",
   "SHOW_REMAINING_TIME_DESC": "在搜尋列右側顯示剩餘時間而非總時長。",
   "CLOCK": "Clock",

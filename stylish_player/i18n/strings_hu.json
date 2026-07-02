@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Az Ön személyes Fanart.tv API kulcsa. Opcionális — kiváló minőségű előadói és albumborítók lekérésére használatos. Szerezzen be egyet a fanart.tv/get-an-api-key/ oldalon.",
   "DISPLAY_FANART_BACKGROUND": "Fan Art megjelenítése a háttérben",
   "DISPLAY_FANART_BACKGROUND_DESC": "Ha engedélyezve van, a lejátszó háttere a fanart.tv-ről lekért fan art képek között váltakozik az aktuálisan játszó előadóhoz.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art szürkeárnyalatosan",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Ha engedélyezve van, a fan art háttérkép szürkeárnyalatosan jelenik meg.",
   "WALLPAPER_URL": "Háttérkép URL",
   "WALLPAPER_URL_DESC": "Egy háttérkép URL-je vagy egy Unsplash API URL, amely fényképeket ad vissza. Több kép diavetítésként fog váltakozni.",
   "WALLPAPER_SHOW_TIME": "Idő megjelenítése a háttérképen",

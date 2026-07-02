@@ -67,6 +67,10 @@
     "type": "boolean",
     "value": false
   },
+  "fanartBackgroundGrayscale": {
+    "type": "boolean",
+    "value": false
+  },
   "wallpaperUrl": {
     "type": "string",
     "value": ""

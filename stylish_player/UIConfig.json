@@ -62,7 +62,7 @@
       },
       "saveButton": {
         "label": "TRANSLATE.SAVE",
-        "data": ["playerType", "theme", "showPlayerControls", "hideTrackTimes", "showRemainingTime", "albumArtMaxSpace", "albumArtAnimated", "showTrackPanel", "useCustomLayout", "vizType", "spectrumOptions", "peppyMeterFolder", "peppyMeterModel", "peppySpectrumFolder", "peppySpectrumModel", "fanartTvApiKey", "displayFanartBackground"]
+        "data": ["playerType", "theme", "showPlayerControls", "hideTrackTimes", "showRemainingTime", "albumArtMaxSpace", "albumArtAnimated", "showTrackPanel", "useCustomLayout", "vizType", "spectrumOptions", "peppyMeterFolder", "peppyMeterModel", "peppySpectrumFolder", "peppySpectrumModel", "fanartTvApiKey", "displayFanartBackground", "fanartBackgroundGrayscale"]
       },
       "content": [
         {
@@ -266,6 +266,17 @@
           "label": "TRANSLATE.DISPLAY_FANART_BACKGROUND",
           "doc": "TRANSLATE.DISPLAY_FANART_BACKGROUND_DESC",
           "value": false
+        },
+        {
+          "id": "fanartBackgroundGrayscale",
+          "element": "switch",
+          "label": "TRANSLATE.FANART_BACKGROUND_GRAYSCALE",
+          "doc": "TRANSLATE.FANART_BACKGROUND_GRAYSCALE_DESC",
+          "value": false,
+          "visibleIf": {
+            "field": "displayFanartBackground",
+            "value": true
+          }
         }
       ]
     },

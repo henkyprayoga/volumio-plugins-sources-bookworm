@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Váš osobný kľúč API Fanart.tv. Voliteľný — používa sa na načítanie vysoko kvalitných obrázkov interpretov a albumov. Získajte ho na fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Zobraziť fan art na pozadí",
   "DISPLAY_FANART_BACKGROUND_DESC": "Keď je povolené, pozadie prehrávača sa strieda medzi obrázkami fan artu získanými z fanart.tv pre aktuálne prehrávaného interpreta.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art v odtieňoch sivej",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Keď je povolené, obrázok fan artu v pozadí sa zobrazuje v odtieňoch sivej.",
   "WALLPAPER_URL": "URL tapety",
   "WALLPAPER_URL_DESC": "URL obrázka tapety alebo URL API Unsplash, ktoré vráti fotografie. Viacero obrázkov sa bude striedať ako prezentácia.",
   "WALLPAPER_SHOW_TIME": "Zobraziť čas na tapete",

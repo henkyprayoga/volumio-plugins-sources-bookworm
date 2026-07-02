@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Το προσωπικό σας κλειδί API Fanart.tv. Προαιρετικό — χρησιμοποιείται για τη λήψη εικόνων καλλιτεχνών και άλμπουμ υψηλής ποιότητας. Αποκτήστε ένα στο fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Εμφάνιση Fan Art στο φόντο",
   "DISPLAY_FANART_BACKGROUND_DESC": "Όταν είναι ενεργοποιημένο, το φόντο του player εναλλάσσεται μεταξύ εικόνων fan art από το fanart.tv για τον καλλιτέχνη που παίζει.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art σε κλίμακα του γκρι",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Όταν είναι ενεργοποιημένο, η εικόνα φόντου fan art εμφανίζεται σε κλίμακα του γκρι.",
   "WALLPAPER_URL": "URL Ταπετσαρίας",
   "WALLPAPER_URL_DESC": "URL εικόνας ταπετσαρίας ή ένα URL API Unsplash που επιστρέφει φωτογραφίες. Πολλαπλές εικόνες θα εναλλάσσονται ως προβολή διαφανειών.",
   "WALLPAPER_SHOW_TIME": "Εμφάνιση Ώρας στην Ταπετσαρία",

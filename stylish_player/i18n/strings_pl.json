@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Twój osobisty klucz API Fanart.tv. Opcjonalny — używany do pobierania wysokiej jakości grafik artystów i albumów. Uzyskaj go na fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Wyświetlaj Fan Art w tle",
   "DISPLAY_FANART_BACKGROUND_DESC": "Gdy włączone, tło odtwarzacza rotuje obrazami fan art pobranymi z fanart.tv dla aktualnie odtwarzanego wykonawcy.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art w skali szarości",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Gdy włączone, obraz tła fan art wyświetlany jest w skali szarości.",
   "WALLPAPER_URL": "URL Tapety",
   "WALLPAPER_URL_DESC": "URL obrazu tapety lub adres URL API Unsplash, który zwraca zdjęcia. Wiele obrazów będzie przełączanych jako pokaz slajdów.",
   "WALLPAPER_SHOW_TIME": "Pokaż Czas na Tapecie",

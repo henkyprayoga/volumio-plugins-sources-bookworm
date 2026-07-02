@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Din personliga Fanart.tv API-nyckel. Valfri — används för att hämta högkvalitativa artist- och albumbilder. Skaffa en på fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Visa fankonst i bakgrunden",
   "DISPLAY_FANART_BACKGROUND_DESC": "När aktiverat roterar spelarens bakgrund mellan fankonstbilder hämtade från fanart.tv för den artist som spelas just nu.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fankonst i gråskala",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "När aktiverat visas fankonst-bakgrundsbilden i gråskala.",
   "WALLPAPER_URL": "URL för Bakgrundsbild",
   "WALLPAPER_URL_DESC": "URL till en bakgrundsbild eller en Unsplash API-URL som returnerar foton. Flera bilder kommer att cyklas som ett bildspel.",
   "WALLPAPER_SHOW_TIME": "Visa Tid på Bakgrundsbild",

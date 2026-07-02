@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "A sua chave API pessoal do Fanart.tv. Opcional — usada para obter imagens de artistas e álbuns em alta qualidade. Obtenha uma em fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Exibir Fan Art no fundo",
   "DISPLAY_FANART_BACKGROUND_DESC": "Quando ativado, o fundo do player alterna entre imagens de fan art obtidas do fanart.tv para o artista em reprodução.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art em escala de cinza",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Quando ativado, a imagem de fundo de fan art é exibida em escala de cinza.",
   "WALLPAPER_URL": "URL do Papel de Parede",
   "WALLPAPER_URL_DESC": "URL de uma imagem de papel de parede ou um URL da API Unsplash que retorna fotos. Várias imagens serão alternadas como apresentação de slides.",
   "WALLPAPER_SHOW_TIME": "Mostrar Hora no Papel de Parede",

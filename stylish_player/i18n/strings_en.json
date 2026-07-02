@@ -64,6 +64,8 @@
   "FANART_TV_API_KEY_DESC": "Your Fanart.tv personal API key. Optional — used to fetch high-quality artist and album artwork. Get one at fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Display Fan Art in Background",
   "DISPLAY_FANART_BACKGROUND_DESC": "When enabled, the player background rotates through fan art images fetched from fanart.tv for the currently playing artist.",
+  "FANART_BACKGROUND_GRAYSCALE": "Grayscale Fan Art Background",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "When enabled, the fan art background image is displayed in grayscale.",
   "WALLPAPER_URL": "Wallpaper URL",
   "WALLPAPER_URL_DESC": "URL of a wallpaper image, or an Unsplash API URL that returns photos. Multiple images will cycle as a slideshow.",
   "WALLPAPER_SHOW_TIME": "Show Time on Wallpaper",

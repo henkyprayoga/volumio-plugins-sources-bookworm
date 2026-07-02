@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Khóa API cá nhân Fanart.tv của bạn. Tùy chọn — dùng để tải hình ảnh nghệ sĩ và album chất lượng cao. Lấy một khóa tại fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Hiển thị Fan Art trong nền",
   "DISPLAY_FANART_BACKGROUND_DESC": "Khi bật, hình nền của trình phát sẽ luân phiên giữa các hình ảnh fan art lấy từ fanart.tv cho nghệ sĩ đang phát.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art nền thang xám",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Khi bật, hình nền fan art được hiển thị dưới dạng thang xám.",
   "WALLPAPER_URL": "URL Hình nền",
   "WALLPAPER_URL_DESC": "URL của hình ảnh hình nền hoặc URL API Unsplash trả về ảnh. Nhiều hình ảnh sẽ được xoay vòng như trình chiếu.",
   "WALLPAPER_SHOW_TIME": "Hiển thị Thời gian trên Hình nền",

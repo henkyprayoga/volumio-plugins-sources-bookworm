@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "あなたの個人用Fanart.tv APIキー。オプション — 高品質なアーティストおよびアルバムのアートワークを取得するために使用します。fanart.tv/get-an-api-key/で取得してください。",
   "DISPLAY_FANART_BACKGROUND": "背景にファンアートを表示",
   "DISPLAY_FANART_BACKGROUND_DESC": "有効にすると、プレーヤーの背景に、現在再生中のアーティストに関して fanart.tv から取得したファンアート画像が順番に表示されます。",
+  "FANART_BACKGROUND_GRAYSCALE": "ファンアートをグレースケール表示",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "有効にすると、背景のファンアート画像がグレースケールで表示されます。",
   "WALLPAPER_URL": "壁紙URL",
   "WALLPAPER_URL_DESC": "壁紙画像のURL、または写真を返すUnsplash API URL。複数の画像はスライドショーとして循環表示されます。",
   "WALLPAPER_SHOW_TIME": "壁紙に時刻を表示",

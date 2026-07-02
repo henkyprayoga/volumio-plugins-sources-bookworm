@@ -60,6 +60,8 @@
   "FANART_TV_API_KEY_DESC": "Votre clé API personnelle Fanart.tv. Facultative — utilisée pour récupérer des illustrations d'artistes et d'albums en haute qualité. Obtenez-en une sur fanart.tv/get-an-api-key/.",
   "DISPLAY_FANART_BACKGROUND": "Afficher Fan Art en arrière-plan",
   "DISPLAY_FANART_BACKGROUND_DESC": "Lorsque activé, l'arrière-plan du lecteur affiche en rotation les images de fan art récupérées depuis fanart.tv pour l'artiste en cours de lecture.",
+  "FANART_BACKGROUND_GRAYSCALE": "Fan Art en niveaux de gris",
+  "FANART_BACKGROUND_GRAYSCALE_DESC": "Lorsque activé, l'image de fond fan art est affichée en niveaux de gris.",
   "WALLPAPER_URL": "URL du Fond d'Écran",
   "WALLPAPER_URL_DESC": "URL d'une image de fond d'écran, ou une URL API Unsplash qui renvoie des photos. Plusieurs images défileront en diaporama.",
   "WALLPAPER_SHOW_TIME": "Afficher l'Heure sur le Fond d'Écran",
